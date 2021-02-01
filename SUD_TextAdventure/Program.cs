@@ -1,9 +1,10 @@
 ﻿using System; 
-using System.Linq.Expressions; 
- 
+using System.Linq.Expressions;
+using SUD_TextAdventure.Rooms;
+
 namespace SUD_TextAdventure 
-{ 
-    class Program 
+{
+    public class Program 
     { 
         static void Main(string[] args) 
         { 
@@ -25,7 +26,7 @@ namespace SUD_TextAdventure
         private bool _corridorTwo = false; 
         private bool _library = false; 
         private bool _dungeon = false;
-        // Hallo 
+        
  
         public int RunProgram() 
         { 
@@ -115,42 +116,25 @@ namespace SUD_TextAdventure
  
             while (!_gameFinished) 
             { 
-                switch (_room) 
+                switch (_room)
                 { 
-                    case "bedroom": 
+                    case "bedroom":
+                        new bedroom().run();
                         break; 
                     case "corridorOne": 
-                        while (_room == "corridorOne") 
-                        { 
-                            Console.WriteLine( 
-                                "Du befindest dich in einem Flur. Du kannst am Ende des Flurs eine weitere Tür sehen. Außerdem scheint es hier auch eine Leiter nach oben zu geben." + 
-                                "\nWas willst du tun? \nUmsehen? \nZur Tür? \nZur Leiter? "); 
-                            validInput = new[] {"umsehen", "zur tür", "zur leiter"}; 
-                            confirmation = checkInput(validInput); 
- 
-                            switch (confirmation) 
-                            { 
-                                case "umsehen": 
-                                    Console.WriteLine( 
-                                        "Du siehst dich um und es scheint, dass lange niemand mehr da gewesen ist. \nAn der Wand steht ein Regal mit verstaubten Porzellan und an der Decke hängen Spinnenweben."); 
-                                    break; 
-                                case "zur tür": 
-                                    Console.WriteLine("Du gehst den Flur bis zur Tür entlang. Du öffnest sie und siehst wie eine Treppe hinunterführt."); 
-                                    _room = "entranceArea"; 
-                                    break; 
-                                case "zur leiter": 
-                                    Console.WriteLine("Du stehst vor der Leiter. Möchtest du sie hoch klettern?"); 
-                                    String[] validInputLadder = {"ja", "nein"}; 
-                                    String confirmationLadder = checkInput(validInputLadder); 
-                                    if (confirmationLadder.Equals("ja")) 
-                                    { 
-                                        Console.WriteLine("Du kletterst die Leiter hoch und öffnest die Luke zum Dachboden."); 
-                                        _room = "attic"; 
-                                    } 
-                                    break; 
-                                default: 
-                                    break; 
-                            } 
+                        while (_room == "corridorOne")
+                        {
+                            string retval = new corridor1().run();
+                            if (retval.Equals("attic"))
+                            {
+                                _attic = true;
+                                _corridorOne = false;
+                            }
+                            else if (retval.Equals("entranceArea"))
+                            {
+                                _entranceArea = true;
+                                _corridorOne = false;
+                            }
                         } 
                         break; 
                     case "attic": 
@@ -179,7 +163,7 @@ namespace SUD_TextAdventure
         } 
  
  
-        public string checkInput(Array validInput) 
+        public string checkInput(Array validInput)
         { 
             bool confirmed = false; 
             while (confirmed == false) 
