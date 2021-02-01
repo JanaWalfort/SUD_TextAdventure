@@ -24,7 +24,8 @@ namespace SUD_TextAdventure
         private bool _balcony = false; 
         private bool _corridorTwo = false; 
         private bool _library = false; 
-        private bool _dungeon = false; 
+        private bool _dungeon = false;
+        // Hallo 
  
         public int RunProgram() 
         { 
