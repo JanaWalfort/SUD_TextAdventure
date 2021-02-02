@@ -28,8 +28,10 @@ namespace SUD_TextAdventure
         private bool _corridorTwo = false; 
         private bool _library = false; 
         private bool _dungeon = false;
-        public int RunProgram() 
-        { 
+        public int RunProgram()
+        {
+            _character.Inventory = new List<Item>();
+            
             Console.WriteLine( 
                 "Du gehst gerade nach Hause, als du plötztlich von hinten einen Schlag auf den Kopf bekommst!" + 
                 "\nAls du wieder zu dir kommst, spürst du einen stechenden Schmerz an deinem Hintekopf. Warte wer warst Du noch einmal?"); 
@@ -56,7 +58,10 @@ namespace SUD_TextAdventure
                     "Du kannst nicht viel sehen. Das Einzige, dass Du erkennen kannst sind die Umrisse des Betts. Du vesuchst aufzustehen."); 
                 Console.WriteLine("Du tastest Dich weiter und erfühlst eine Kerze mit Streichhölzern!");
                 _character.Inventory.Add(new Item() {ItemName = "Kerze"});
-                Console.WriteLine(_character.Inventory.Find(x => x.ItemName.Contains("Kerze")));
+                // if (_character.Inventory.Exists(x => x.ItemName == "Kerze"))
+                // {
+                    // Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                // }
             } 
  
             if (confirmation.ToLower().Equals("aufstehen")) 
@@ -142,21 +147,29 @@ namespace SUD_TextAdventure
                     case "attic":
                         new attic().run();
                         break; 
-                    case "entranceArea": 
+                    case "entranceArea":
+                        new entranceArea().run();
                         break; 
-                    case "kitchen": 
+                    case "kitchen":
+                        new kitchen().run();
                         break; 
-                    case "garden": 
+                    case "garden":
+                        new garden().run();
                         break; 
-                    case "ballroom": 
+                    case "ballroom":
+                        new ballroom().run();
                         break; 
-                    case "balcony": 
+                    case "balcony":
+                        new balcony().run();
                         break; 
-                    case "corridorTwo": 
+                    case "corridorTwo":
+                        new corrdidor2().run();
                         break; 
-                    case "library": 
+                    case "library":
+                        new library().run();
                         break; 
-                    case "dungeon": 
+                    case "dungeon":
+                        new dungeon().run();
                         break; 
                     default: 
                         return 1; 

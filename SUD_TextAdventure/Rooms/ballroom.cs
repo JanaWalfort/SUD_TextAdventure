@@ -2,6 +2,13 @@
 {
     public class ballroom
     {
-        
+        public Program _Program;
+
+
+        public string run()
+        {
+
+            return "";
+        }
     }
 }

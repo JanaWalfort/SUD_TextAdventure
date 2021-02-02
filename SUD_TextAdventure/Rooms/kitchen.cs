@@ -2,6 +2,13 @@
 {
     public class kitchen
     {
-        
+        public Program _Program;
+
+
+        public string run()
+        {
+
+            return "";
+        }
     }
 }
