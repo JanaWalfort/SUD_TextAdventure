@@ -1,18 +1,20 @@
-﻿using System; 
+﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
+using SUD_TextAdventure.Models;
 using SUD_TextAdventure.Rooms;
 
 namespace SUD_TextAdventure 
 {
     public class Program 
-    { 
+    {
         static void Main(string[] args) 
         { 
             Program mainView = new Program(); 
             mainView.RunProgram(); 
         } 
  
-        private String _charName = ""; 
+        private readonly Character _character = new Character();
         private bool _gameFinished = false; 
         private String _room = "bedroom"; 
         private bool _bedroom = true; 
@@ -26,21 +28,19 @@ namespace SUD_TextAdventure
         private bool _corridorTwo = false; 
         private bool _library = false; 
         private bool _dungeon = false;
-        
- 
         public int RunProgram() 
         { 
             Console.WriteLine( 
                 "Du gehst gerade nach Hause, als du plötztlich von hinten einen Schlag auf den Kopf bekommst!" + 
                 "\nAls du wieder zu dir kommst, spürst du einen stechenden Schmerz an deinem Hintekopf. Warte wer warst Du noch einmal?"); 
-            _charName = Console.ReadLine(); 
-            Console.WriteLine($"Ach genau! Du bist {_charName}, richtig?"); 
+            _character.Name = Console.ReadLine(); 
+            Console.WriteLine($"Ach genau! Du bist {_character.Name}, richtig?"); 
             String[] validInput = {"nein", "ja"}; 
             string confirmation = checkInput(validInput); 
             if (confirmation.ToLower().Equals("nein")) 
             { 
                 Console.WriteLine("Wie ist denn dann dein Name?"); 
-                _charName = Console.ReadLine(); 
+                _character.Name = Console.ReadLine(); 
             } 
  
             Console.WriteLine("Nach allem Anschein wurdest du entführt. Du solltest versuchen dich zu befreien!" + 
@@ -54,7 +54,9 @@ namespace SUD_TextAdventure
             { 
                 Console.WriteLine( 
                     "Du kannst nicht viel sehen. Das Einzige, dass Du erkennen kannst sind die Umrisse des Betts. Du vesuchst aufzustehen."); 
-                Console.WriteLine("Du tastest Dich weiter und erfühlst einen Lichtschalter!"); 
+                Console.WriteLine("Du tastest Dich weiter und erfühlst eine Kerze mit Streichhölzern!");
+                _character.Inventory.Add(new Item() {ItemName = "Kerze"});
+                Console.WriteLine(_character.Inventory.Find(x => x.ItemName.Contains("Kerze")));
             } 
  
             if (confirmation.ToLower().Equals("aufstehen")) 
@@ -137,7 +139,8 @@ namespace SUD_TextAdventure
                             }
                         } 
                         break; 
-                    case "attic": 
+                    case "attic":
+                        new attic().run();
                         break; 
                     case "entranceArea": 
                         break; 

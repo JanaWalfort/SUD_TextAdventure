@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Linq.Expressions;
 
 namespace SUD_TextAdventure.Rooms
 {
-    public class corridor1
+    public class attic
     {
         public Program _Program;
         
@@ -11,8 +10,8 @@ namespace SUD_TextAdventure.Rooms
         public string run()
         {
             Console.WriteLine(
-                "Du befindest dich in einem Flur. Du kannst am Ende des Flurs eine weitere Tür sehen. Außerdem scheint es hier auch eine Leiter nach oben zu geben." +
-                "\nWas willst du tun? \nUmsehen? \nZur Tür? \nZur Leiter? ");
+                "" +
+                "\n? \n? \n? \nZurück? ");
             String[] validInput = {"umsehen", "zur tür", "zur leiter", "zurück"};
             string confirmation = _Program.checkInput(validInput);
 
