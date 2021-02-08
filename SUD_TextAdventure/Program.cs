@@ -27,7 +27,7 @@ namespace SUD_TextAdventure
             
             Console.WriteLine( 
                 "Du gehst gerade nach Hause, als du plötztlich von hinten einen Schlag auf den Kopf bekommst!" + 
-                "\nAls du wieder zu dir kommst, spürst du einen stechenden Schmerz an deinem Hintekopf. Warte wer warst Du noch einmal?"); 
+                "\nAls du wieder zu dir kommst, spürst du einen stechenden Schmerz an deinem Hinterkopf. Warte, wer warst Du noch einmal?"); 
             _character.Name = Console.ReadLine(); 
             Console.WriteLine($"Ach genau! Du bist {_character.Name}, richtig?"); 
             String[] validInput = {"nein", "ja"}; 
@@ -48,8 +48,8 @@ namespace SUD_TextAdventure
             if (confirmation.Equals("umsehen")) 
             { 
                 Console.WriteLine( 
-                    "Du kannst nicht viel sehen. Das Einzige, dass Du erkennen kannst sind die Umrisse des Betts. Du vesuchst aufzustehen."); 
-                Console.WriteLine("Du tastest Dich weiter und erfühlst eine Kerze mit Streichhölzern!");
+                    "Du kannst nicht viel sehen. Das Einzige, das Du erkennen kannst, sind die Umrisse des Betts. Du versuchst aufzustehen."); 
+                Console.WriteLine("Du tastest Dich weiter und erfühlst eine Kerze und Streichhölzer!");
                 // if (_character.Inventory.Exists(x => x.ItemName == "Kerze"))
                 // {
                     // Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -79,18 +79,18 @@ namespace SUD_TextAdventure
                         if (keyFound) 
                         { 
                             Console.WriteLine( 
-                                "Du gehst auf die Tür zu und versuchst die Tür mit dem Schlüssel zu öffnen. Der Schlüssel lässt sich im Schloss drehen und die Tür öffnet sich. \nDu gehst hindurch."); 
+                                "Du gehst auf die Tür zu und versuchst die Tür mit dem Schlüssel zu öffnen. Der Schlüssel lässt sich im Schloss umdrehen und die Tür öffnet sich. \nDu gehst hindurch."); 
                             doorOpened = true; 
                             _room = "corridorOne"; 
                             break; 
                         } 
  
                         Console.WriteLine( 
-                            "Du gehst auf die Tür zu. Sie wirkt ziemlich alt.\nDu versuchst sie zu öffnen, aber sie bewegt siche keinen Zentimeter."); 
+                            "Du gehst auf die Tür zu. Sie wirkt ziemlich alt.\nDu versuchst sie zu öffnen, aber sie bewegt sich keinen Zentimeter."); 
                         break; 
                     case "schrank": 
                         Console.WriteLine( 
-                            "Der Schrank steht in der Ecke des Raums. So wie es aus sieht, scheint nur unbrauchbares Zeug darin zu liegen."); 
+                            "Der Schrank steht in der Ecke des Raums. So wie es aussieht, scheint nur unbrauchbares Zeug darin zu liegen."); 
                         break; 
                     case "bett": 
                         Console.WriteLine("Du schaust unters Bett und findest eine Schatulle. Willst Du sie öffnen? "); 
