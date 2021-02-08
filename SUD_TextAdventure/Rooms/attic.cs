@@ -11,31 +11,24 @@ namespace SUD_TextAdventure.Rooms
         {
             Console.WriteLine(
                 "" +
-                "\n? \n? \n? \nZurück? ");
-            String[] validInput = {"umsehen", "zur tür", "zur leiter", "zurück"};
+                "Umsehen\n? \n? \n? \nZurück? ");
+            String[] validInput = {"umsehen", "", "", "zurück"};
             string confirmation = _Program.checkInput(validInput);
 
             switch (confirmation)
             {
                 case "umsehen":
                     Console.WriteLine(
-                        "Du siehst dich um und es scheint, dass lange niemand mehr da gewesen ist. \nAn der Wand steht ein Regal mit verstaubten Porzellan und an der Decke hängen Spinnenweben.");
+                        "");
                     break;
-                case "zur tür":
+                case "":
                     Console.WriteLine(
-                        "Du gehst den Flur bis zur Tür entlang. Du öffnest sie und siehst wie eine Treppe hinunterführt.");
+                        "");
                     return "entranceArea";
                     break;
-                case "zur leiter":
-                    Console.WriteLine("Du stehst vor der Leiter. Möchtest du sie hoch klettern?");
-                    String[] validInputLadder = {"ja", "nein"};
-                    String confirmationLadder = _Program.checkInput(validInputLadder);
-                    if (confirmationLadder.Equals("ja"))
-                    {
-                        Console.WriteLine("Du kletterst die Leiter hoch und öffnest die Luke zum Dachboden.");
-                        return "attic";
-                    }
-                    break;
+                case "zurück":
+                        Console.WriteLine("Du kletterst die Leiter wieder herunter und schließt die Luke zum Dachboden.");
+                        return "corridor1";
                 default:
                     break;
             }

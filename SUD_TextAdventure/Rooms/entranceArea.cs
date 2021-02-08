@@ -7,7 +7,7 @@
 
         public string run()
         {
-
+            // Umsehen: Auf den Fliesen sind verschiedene Tiere zu sehen, wie ein Bär, ein Adler, ein Hirsch ...
             return "";
         }
     }

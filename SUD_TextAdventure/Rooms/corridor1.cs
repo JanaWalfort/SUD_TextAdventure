@@ -6,10 +6,16 @@ namespace SUD_TextAdventure.Rooms
     public class corridor1
     {
         public Program _Program;
-        
+
+        public corridor1(Program program)
+        {
+            _Program = program;
+        }
+
 
         public string run()
         {
+            
             Console.WriteLine(
                 "Du befindest dich in einem Flur. Du kannst am Ende des Flurs eine weitere Tür sehen. Außerdem scheint es hier auch eine Leiter nach oben zu geben." +
                 "\nWas willst du tun? \nUmsehen? \nZur Tür? \nZur Leiter? ");

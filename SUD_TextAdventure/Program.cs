@@ -15,19 +15,12 @@ namespace SUD_TextAdventure
         } 
  
         private readonly Character _character = new Character();
-        private bool _gameFinished = false; 
-        private String _room = "bedroom"; 
-        private bool _bedroom = true; 
-        private bool _corridorOne = false; 
-        private bool _attic = false; 
-        private bool _entranceArea = false; 
-        private bool _kitchen = false; 
-        private bool _garden = false; 
-        private bool _ballroom = false; 
-        private bool _balcony = false; 
-        private bool _corridorTwo = false; 
-        private bool _library = false; 
-        private bool _dungeon = false;
+        private bool _gameFinished = false;
+        private String _room = "bedroom";
+
+        public String noteKey = "";
+        
+        
         public int RunProgram()
         {
             _character.Inventory = new List<Item>();
@@ -57,7 +50,6 @@ namespace SUD_TextAdventure
                 Console.WriteLine( 
                     "Du kannst nicht viel sehen. Das Einzige, dass Du erkennen kannst sind die Umrisse des Betts. Du vesuchst aufzustehen."); 
                 Console.WriteLine("Du tastest Dich weiter und erfühlst eine Kerze mit Streichhölzern!");
-                _character.Inventory.Add(new Item() {ItemName = "Kerze"});
                 // if (_character.Inventory.Exists(x => x.ItemName == "Kerze"))
                 // {
                     // Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -66,10 +58,11 @@ namespace SUD_TextAdventure
  
             if (confirmation.ToLower().Equals("aufstehen")) 
             { 
-                Console.WriteLine("Du tastest Dich weiter und erfühlst einen Lichtschalter!"); 
-            } 
- 
-            Console.WriteLine("\nDer Raum ist nun hell erleuchtet."); 
+                Console.WriteLine("Du tastest Dich weiter und erfühlst eine Kerze und Streichhölzer!"); 
+            }
+            
+            _character.Inventory.Add(new Item() {ItemName = "Kerze"});
+            Console.WriteLine("\nDu zündest die Kerze an und kannst nun Deine Umgebung besser erkennen.");
  
             bool doorOpened = false; 
             bool keyFound = false; 
@@ -77,7 +70,7 @@ namespace SUD_TextAdventure
             { 
                 Console.WriteLine( 
                     "Du siehst: Einen Schrank, ein Bett und eine Tür. Was willst Du Dir genauer ansehen?"); 
-                validInput = new[] {"tür", "schrank", "bett"}; 
+                validInput = new[] {"tür", "schrank", "bett"};
                 confirmation = checkInput(validInput); 
  
                 switch (confirmation) 
@@ -131,16 +124,14 @@ namespace SUD_TextAdventure
                     case "corridorOne": 
                         while (_room == "corridorOne")
                         {
-                            string retval = new corridor1().run();
+                            string retval = new corridor1(this).run();
                             if (retval.Equals("attic"))
                             {
-                                _attic = true;
-                                _corridorOne = false;
+                                _room = "attic";
                             }
                             else if (retval.Equals("entranceArea"))
                             {
-                                _entranceArea = true;
-                                _corridorOne = false;
+                                _room = "entranceArea";
                             }
                         } 
                         break; 
@@ -187,10 +178,10 @@ namespace SUD_TextAdventure
                 string input = Console.ReadLine(); 
                 foreach (var valid in validInput) 
                 { 
-                    if (input.ToLower().Equals(valid)) 
+                    if (input.ToLower().Contains(valid.ToString())) 
                     { 
                         confirmed = true; 
-                        Console.WriteLine(""); 
+                        Console.WriteLine("");
                         return valid.ToString(); 
                     } 
                 } 
