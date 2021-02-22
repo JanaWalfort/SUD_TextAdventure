@@ -14,8 +14,8 @@ namespace SUD_TextAdventure
             mainView.RunProgram(); 
         } 
  
-        private readonly Character _character = new Character();
-        private bool _gameFinished = false;
+        public readonly Character _character = new Character();
+        public bool _gameFinished = false;
         private String _room = "bedroom";
 
         public String noteKey = "";
@@ -136,7 +136,14 @@ namespace SUD_TextAdventure
                         } 
                         break; 
                     case "attic":
-                        new attic().run();
+                        while (_room == "attic")
+                        {
+                            string retval = new attic(this).run();
+                            if (retval.Equals("corridorOne"))
+                            {
+                                _room = "corridorOne";
+                            }
+                        }
                         break; 
                     case "entranceArea":
                         new entranceArea().run();
