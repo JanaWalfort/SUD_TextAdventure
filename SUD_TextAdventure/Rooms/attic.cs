@@ -12,7 +12,7 @@ namespace SUD_TextAdventure.Rooms
             _Program = program;
         }
         
-        private bool isWindowBroken = false;
+        private bool _isWindowBroken = false;
 
         public string run()
         {
@@ -31,28 +31,28 @@ namespace SUD_TextAdventure.Rooms
                     _Program._character.Inventory.Add(new Item() {ItemName = "Adler"});
                     break;
                 case "fenster":
-                    if (!isWindowBroken && _Program._character.Inventory.Exists(x => x.ItemName == "Brechstange"))
+                    if (!_isWindowBroken && _Program._character.Inventory.Exists(x => x.ItemName == "Brechstange"))
                     {
                         Console.WriteLine("Mit Deiner Brechstange zerschlägst Du das Fenster. Du schaust heraus und es ist viel zu hoch, um raus zu klettern.");
-                        isWindowBroken = true;
+                        _isWindowBroken = true;
                     }
-                    else if (!isWindowBroken && _Program._character.Inventory.Exists(x => x.ItemName == "Schwert"))
+                    else if (!_isWindowBroken && _Program._character.Inventory.Exists(x => x.ItemName == "Schwert"))
                     {
                         Console.WriteLine("Mit Deinem Schwert zerschlägst Du das Fenster. Du schaust heraus und es ist viel zu hoch, um raus zu klettern.");
-                        isWindowBroken = true;
+                        _isWindowBroken = true;
                     }
                     else
                     {
                         Console.WriteLine("Du guckst aus Fenster hinaus und siehst den Mond am Himmel stehen.");
                     }
-                    if (isWindowBroken && _Program._character.Inventory.Exists(x => x.ItemName == "Seil"))
+                    if (_isWindowBroken && _Program._character.Inventory.Exists(x => x.ItemName == "Seil"))
                     {
                         Console.WriteLine("Um herauszuklettern könntest Du das Seil an der Kiste hinter Dir festbinden. Möchtest Du das versuchen?");
                         validInput = new[] {"ja", "nein"}; 
                         confirmation = _Program.checkInput(validInput);
                         if (confirmation.Equals("ja"))
                         {
-                            Console.WriteLine("Du machst das Seil fest und kletterst langsam die Wand herunter. Unten angekommen rennst zur Straße und endeckst eine TElefonzelle" +
+                            Console.WriteLine("Du machst das Seil fest und kletterst langsam die Wand herunter. Unten angekommen rennst zur Straße und endeckst eine Telefonzelle" +
                                               "Du rufst die Polizei und bist entkommen. Herzlichen Glückwunsch!");
                             _Program._gameFinished = true;
                         }

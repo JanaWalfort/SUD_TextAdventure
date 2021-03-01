@@ -4,6 +4,11 @@
     {
         public Program _Program;
 
+        public balcony(Program program)
+        {
+            _Program = program;
+        }
+
 
         public string run()
         {

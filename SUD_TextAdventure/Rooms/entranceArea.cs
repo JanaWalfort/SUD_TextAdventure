@@ -1,9 +1,13 @@
-﻿namespace SUD_TextAdventure.Rooms
+namespace SUD_TextAdventure.Rooms
 {
     public class entranceArea
     {
         public Program _Program;
 
+        public entranceArea(Program program)
+        {
+            _Program = program;
+        }
 
         public string run()
         {

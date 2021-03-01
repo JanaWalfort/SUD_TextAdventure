@@ -119,7 +119,15 @@ namespace SUD_TextAdventure
                 switch (_room)
                 { 
                     case "bedroom":
-                        new bedroom().run();
+                        while (_room == "bedroom")
+                        {
+                            string retval = new bedroom(this).run();
+                            if (retval.Equals(""))
+                            {
+                                _room = "";
+                            }
+                        }
+                        
                         break; 
                     case "corridorOne": 
                         while (_room == "corridorOne")
@@ -146,28 +154,92 @@ namespace SUD_TextAdventure
                         }
                         break; 
                     case "entranceArea":
-                        new entranceArea().run();
+                        while (_room == "entranceArea")
+                        {
+                            string retval = new entranceArea(this).run();
+                            if (retval.Equals(""))
+                            {
+                                _room = "";
+                            }
+                        }
+                        
                         break; 
                     case "kitchen":
-                        new kitchen().run();
+                        while (_room == "kitchen")
+                        {
+                            string retval = new kitchen(this).run();
+                            if (retval.Equals(""))
+                            {
+                                _room = "";
+                            }
+                        }
+                        
                         break; 
                     case "garden":
-                        new garden().run();
+                        while (_room == "garden")
+                        {
+                            string retval = new garden(this).run();
+                            if (retval.Equals(""))
+                            {
+                                _room = "";
+                            }
+                        }
+                        
                         break; 
                     case "ballroom":
-                        new ballroom().run();
+                        while (_room == "ballroom")
+                        {
+                            string retval = new ballroom(this).run();
+                            if (retval.Equals(""))
+                            {
+                                _room = "";
+                            }
+                        }
+                        
                         break; 
                     case "balcony":
-                        new balcony().run();
+                        while (_room == "balcony")
+                        {
+                            string retval = new balcony(this).run();
+                            if (retval.Equals(""))
+                            {
+                                _room = "";
+                            }
+                        }
+                        
                         break; 
                     case "corridorTwo":
-                        new corrdidor2().run();
+                        while (_room == "corridorTwo")
+                        {
+                            string retval = new corrdidor2(this).run();
+                            if (retval.Equals(""))
+                            {
+                                _room = "";
+                            }
+                        }
+                        
                         break; 
                     case "library":
-                        new library().run();
+                        while (_room == "library")
+                        {
+                            string retval = new library(this).run();
+                            if (retval.Equals(""))
+                            {
+                                _room = "";
+                            }
+                        }
+                        
                         break; 
                     case "dungeon":
-                        new dungeon().run();
+                        while (_room == "dungeon")
+                        {
+                            string retval = new dungeon(this).run();
+                            if (retval.Equals(""))
+                            {
+                                _room = "";
+                            }
+                        }
+                        
                         break; 
                     default: 
                         return 1; 

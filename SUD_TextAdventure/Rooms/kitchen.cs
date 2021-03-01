@@ -4,6 +4,11 @@
     {
         public Program _Program;
 
+        public kitchen(Program program)
+        {
+            _Program = program;
+        }
+
 
         public string run()
         {
