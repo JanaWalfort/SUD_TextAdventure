@@ -1,4 +1,5 @@
 ﻿using System;
+using SUD_TextAdventure.Models;
 
 namespace SUD_TextAdventure.Rooms
 {
@@ -11,61 +12,91 @@ namespace SUD_TextAdventure.Rooms
             _Program = program;
         }
 
-        private bool _isDownstairs = false;
-
-        public string run()
+        public string run(bool isDownstairs)
         {
-            Console.WriteLine(
-                "Du befindest Dich auf der oberen Ebene. Von der Decke hängt ein großer Kronleuchter und hinter dir hängen unzählige Gemälde, die längst verstorbebe Personen zeigen. \nWas willst Du tun? \nUmsehen? \nTreppe hinunter? \nZur Tür?");
-            String[] validInput = {"umsehen", "tür", "treppe", "gemälde"};
-            string confirmation = _Program.checkInput(validInput);
-
-            switch (confirmation)
+            while (_Program.Room == "entranceArea")
             {
-                case "umsehen":
-                    break;
-                case "tür":
-                    break;
-                case "treppe":
-                    Console.WriteLine(
-                        "Du gehst die Treppe herunter.");
-                    while (_isDownstairs)
+                if (isDownstairs)
+                {
+                    while (isDownstairs)
                     {
                         Console.WriteLine(
                             "Von hier aus kannst Du zwei weitere Wege erkennen. Außerdem siehst Du die große Tür des Eingangsbereichs.\nUmsehen? \nZur Einganstür? \nZur linken Tür? \nZur rechten Tür? \nTreppe hinauf?");
-                        validInput = new[] {"umsehen", "eingangstür", "link", "recht", "treppe"};
-                        confirmation = _Program.checkInput(validInput);
+                        String[] validInput = {"umsehen", "eingangstür", "link", "recht", "treppe"};
+                        string confirmation = _Program.CheckInput(validInput);
                         switch (confirmation)
                         {
                             case "umsehen":
+                                Console.WriteLine("Über schwebt ominös der Kronleuchter. Dir gegenüber liegt eine große, robuste Tür. Du kannst ausgefallene und seltsame Schnitzereien an der ihr erkennen.");
                                 break;
                             case "eingangstür":
-                                if (_Program._character.Inventory.Exists(x => x.ItemName == "schlüssel"))
+                                if (_Program.Character.Inventory.Exists(x => x.ItemName == "schlüssel"))
                                 {
                                     Console.WriteLine(
                                         "Du versuchst den Schlüssel ins Schloss zu stecken und Du kannst den Schlüssel im Schloss herumdrehen. Das Schloss klickt und Du schiebst die schwere Tür zur Seite\n Mit deiner neu gefundenen Freiheit rennst Du die Straße hinunter und findest eine Telefonzelle mit der Du die Polizei rufst. Herzlichen Glückwunsch, Du bist entkommen!");
+                                    _Program.GameFinished = true;
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Du drückst Dich gegen die Tür, aber sie bewegt sich kein Stück.");
+                                    Console.WriteLine(
+                                        "Du drückst Dich gegen die Tür, aber sie bewegt sich kein Stück.");
                                 }
 
                                 break;
                             case "link":
-                                break;
+                                Console.WriteLine("Du öffnest die Tür und gehst hindurch in einen Flur.");
+                                return "corridorTwo";
                             case "recht":
-                                break;
+                                Console.WriteLine("Du gehst auf die Tür zu und öffnest sie. Was duftet denn da so?");
+                                return "kitchen";
                             case "treppe":
+                                Console.WriteLine("Du gehst die Treppe hoch.");
+                                isDownstairs = false;
                                 break;
                         }
                     }
+                }
+                else
+                {
+                    Console.WriteLine(
+                        "Du befindest Dich auf der oberen Ebene. Von der Decke hängt ein großer Kronleuchter und hinter dir hängen unzählige Gemälde, die längst verstorbene Personen zeigen. \nWas willst Du tun? \nUmsehen? \nTreppe hinunter? \nZur Tür?");
+                    String[] validInput = {"umsehen", "tür", "treppe", "gemälde"};
+                    string confirmation = _Program.CheckInput(validInput);
 
-                    break;
-                case "gemälde":
-                    break;
+                    switch (confirmation)
+                    {
+                        case "umsehen":
+                            Console.WriteLine(
+                                "Du schaust Dich ein bisschen um. Was ist das? Unter deinem rechten Fuß wackelt eine Fliese. Willst Du Dir das genauer anschauen?");
+                            validInput = new[] {"ja", "nein"};
+                            confirmation = _Program.CheckInput(validInput);
+                            if (confirmation.Equals("ja"))
+                            {
+                                Console.WriteLine(
+                                    "Du hebst die Fliese hoch und entdeckst eine Taschenlampe. Sie wird bestimmt nützlich sein und Du packst sie ein.");
+                                _Program.Character.Inventory.Add(new Item() {ItemName = "Taschenlampe"});
+                            }
+                            else
+                            {
+                                Console.WriteLine("Sonst gibt es hier nichts weiter zu sehen.");
+                            }
+
+                            break;
+                        case "tür":
+                            Console.WriteLine("Du gehst durch die Tür hindurch.");
+                            return "corridorOne";
+                        case "treppe":
+                            Console.WriteLine(
+                                "Du gehst die Treppe herunter.");
+                            isDownstairs = true;
+                            break;
+                        case "gemälde":
+                            Console.WriteLine("Du schaust Dir die Gemälde etwas genauer an. Sie sehen sehr alt aus. Haben sie hier vielleicht mal gelebt?"); //ToDo: Tipp verstecken
+                            break;
+                    }
+                }
             }
-
-            return "";
+            return "1";
         }
     }
 }

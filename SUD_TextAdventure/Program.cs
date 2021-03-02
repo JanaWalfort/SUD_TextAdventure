@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using SUD_TextAdventure.Models;
 using SUD_TextAdventure.Rooms;
 
@@ -14,28 +13,29 @@ namespace SUD_TextAdventure
             mainView.RunProgram(); 
         } 
  
-        public readonly Character _character = new Character();
-        public bool _gameFinished = false;
-        private String _room = "bedroom";
+        public readonly Character Character = new Character();
+        public bool GameFinished = false;
+        public string Room = "bedroom";
+        private bool _isDownstairs = false;
 
-        public String noteKey = "";
+        public string NoteKey = "";
         
         
         public int RunProgram()
         {
-            _character.Inventory = new List<Item>();
+            Character.Inventory = new List<Item>();
             
             Console.WriteLine( 
                 "Du gehst gerade nach Hause, als du plötztlich von hinten einen Schlag auf den Kopf bekommst!" + 
                 "\nAls du wieder zu dir kommst, spürst du einen stechenden Schmerz an deinem Hinterkopf. Warte, wer warst Du noch einmal?"); 
-            _character.Name = Console.ReadLine(); 
-            Console.WriteLine($"Ach genau! Du bist {_character.Name}, richtig?"); 
+            Character.Name = Console.ReadLine(); 
+            Console.WriteLine($"Ach genau! Du bist {Character.Name}, richtig?"); 
             String[] validInput = {"nein", "ja"}; 
-            string confirmation = checkInput(validInput); 
+            string confirmation = CheckInput(validInput); 
             if (confirmation.ToLower().Equals("nein")) 
             { 
                 Console.WriteLine("Wie ist denn dann dein Name?"); 
-                _character.Name = Console.ReadLine(); 
+                Character.Name = Console.ReadLine(); 
             } 
  
             Console.WriteLine("Nach allem Anschein wurdest du entführt. Du solltest versuchen dich zu befreien!" + 
@@ -43,7 +43,7 @@ namespace SUD_TextAdventure
  
  
             validInput = new[] {"aufstehen", "umsehen"}; 
-            confirmation = checkInput(validInput); 
+            confirmation = CheckInput(validInput); 
  
             if (confirmation.Equals("umsehen")) 
             { 
@@ -61,7 +61,7 @@ namespace SUD_TextAdventure
                 Console.WriteLine("Du tastest Dich weiter und erfühlst eine Kerze und Streichhölzer!"); 
             }
             
-            _character.Inventory.Add(new Item() {ItemName = "Kerze"});
+            Character.Inventory.Add(new Item() {ItemName = "Kerze"});
             Console.WriteLine("\nDu zündest die Kerze an und kannst nun Deine Umgebung besser erkennen.");
  
             bool doorOpened = false; 
@@ -71,7 +71,7 @@ namespace SUD_TextAdventure
                 Console.WriteLine( 
                     "Du siehst: Einen Schrank, ein Bett und eine Tür. Was willst Du Dir genauer ansehen?"); 
                 validInput = new[] {"tür", "schrank", "bett"};
-                confirmation = checkInput(validInput); 
+                confirmation = CheckInput(validInput); 
  
                 switch (confirmation) 
                 { 
@@ -81,7 +81,7 @@ namespace SUD_TextAdventure
                             Console.WriteLine( 
                                 "Du gehst auf die Tür zu und versuchst die Tür mit dem Schlüssel zu öffnen. Der Schlüssel lässt sich im Schloss umdrehen und die Tür öffnet sich. \nDu gehst hindurch."); 
                             doorOpened = true; 
-                            _room = "corridorOne"; 
+                            Room = "corridorOne"; 
                             break; 
                         } 
  
@@ -95,12 +95,12 @@ namespace SUD_TextAdventure
                     case "bett": 
                         Console.WriteLine("Du schaust unters Bett und findest eine Schatulle. Willst Du sie öffnen? "); 
                         validInput = new[] {"ja", "nein"}; 
-                        confirmation = checkInput(validInput); 
+                        confirmation = CheckInput(validInput); 
  
                         if (confirmation.Equals("nein")) 
                         { 
                             Console.WriteLine("Bist Du Dir sicher?"); 
-                            confirmation = checkInput(validInput); 
+                            confirmation = CheckInput(validInput); 
                             if (confirmation.Equals("ja")) 
                             { 
                                 break; 
@@ -114,129 +114,128 @@ namespace SUD_TextAdventure
                 } 
             } 
  
-            while (!_gameFinished) 
+            while (!GameFinished) 
             { 
-                switch (_room)
+                switch (Room)
                 { 
                     case "bedroom":
-                        while (_room == "bedroom")
+                        while (Room == "bedroom")
                         {
                             string retval = new bedroom(this).run();
                             if (retval.Equals(""))
                             {
-                                _room = "";
+                                Room = "";
                             }
                         }
                         
                         break; 
                     case "corridorOne": 
-                        while (_room == "corridorOne")
+                        while (Room == "corridorOne")
                         {
                             string retval = new corridor1(this).run();
                             if (retval.Equals("attic"))
                             {
-                                _room = "attic";
+                                Room = "attic";
                             }
                             else if (retval.Equals("entranceArea"))
                             {
-                                _room = "entranceArea";
+                                _isDownstairs = false;
+                                Room = "entranceArea";
                             }
                         } 
                         break; 
                     case "attic":
-                        while (_room == "attic")
+                        while (Room == "attic")
                         {
                             string retval = new attic(this).run();
                             if (retval.Equals("corridorOne"))
                             {
-                                _room = "corridorOne";
+                                Room = "corridorOne";
                             }
                         }
                         break; 
                     case "entranceArea":
-                        while (_room == "entranceArea")
+                        string val = new entranceArea(this).run(_isDownstairs);
+                        if (val.Equals(""))
                         {
-                            string retval = new entranceArea(this).run();
-                            if (retval.Equals(""))
-                            {
-                                _room = "";
-                            }
+                            Room = "";
                         }
-                        
                         break; 
                     case "kitchen":
-                        while (_room == "kitchen")
+                        while (Room == "kitchen")
                         {
                             string retval = new kitchen(this).run();
-                            if (retval.Equals(""))
+                            if (retval.Equals("entranceArea"))
                             {
-                                _room = "";
+                                _isDownstairs = true;
+                                Room = "entranceArea";
                             }
                         }
                         
                         break; 
                     case "garden":
-                        while (_room == "garden")
+                        while (Room == "garden")
                         {
                             string retval = new garden(this).run();
                             if (retval.Equals(""))
                             {
-                                _room = "";
+                                Room = "";
                             }
                         }
                         
                         break; 
                     case "ballroom":
-                        while (_room == "ballroom")
+                        while (Room == "ballroom")
                         {
                             string retval = new ballroom(this).run();
                             if (retval.Equals(""))
                             {
-                                _room = "";
+                                Room = "";
                             }
                         }
                         
                         break; 
                     case "balcony":
-                        while (_room == "balcony")
+                        while (Room == "balcony")
                         {
                             string retval = new balcony(this).run();
                             if (retval.Equals(""))
                             {
-                                _room = "";
+                                Room = "";
                             }
                         }
                         
                         break; 
                     case "corridorTwo":
-                        while (_room == "corridorTwo")
+                        while (Room == "corridorTwo")
                         {
                             string retval = new corrdidor2(this).run();
-                            if (retval.Equals(""))
+                            if (retval.Equals("entranceArea"))
                             {
-                                _room = "";
+                                _isDownstairs = true;
+                                Room = "entranceArea";
                             }
                         }
                         
                         break; 
                     case "library":
-                        while (_room == "library")
+                        while (Room == "library")
                         {
                             string retval = new library(this).run();
                             if (retval.Equals(""))
                             {
-                                _room = "";
+                                Room = "";
                             }
                         }
                         
                         break; 
                     case "dungeon":
-                        while (_room == "dungeon")
+                        while (Room == "dungeon")
                         {
                             string retval = new dungeon(this).run();
                             if (retval.Equals(""))
                             {
-                                _room = "";
+                                Room = "";
                             }
                         }
                         
@@ -249,25 +248,22 @@ namespace SUD_TextAdventure
         } 
  
  
-        public string checkInput(Array validInput)
+        public string CheckInput(Array validInput)
         { 
-            bool confirmed = false; 
+            var confirmed = false; 
             while (confirmed == false) 
             { 
-                string input = Console.ReadLine(); 
-                foreach (var valid in validInput) 
-                { 
-                    if (input.ToLower().Contains(valid.ToString())) 
-                    { 
-                        confirmed = true; 
-                        Console.WriteLine("");
-                        return valid.ToString(); 
-                    } 
+                var input = Console.ReadLine(); 
+                foreach (var valid in validInput)
+                {
+                    if (input == null || !input.ToLower().Contains(valid.ToString()!)) continue;
+                    confirmed = true; 
+                    Console.WriteLine("");
+                    return valid.ToString();
                 } 
  
                 Console.WriteLine("Bitte gebe eine gültige Eingabe ein."); 
-            } 
- 
+            }
             return ""; 
         } 
     } 

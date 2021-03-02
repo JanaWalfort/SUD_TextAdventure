@@ -20,7 +20,7 @@ namespace SUD_TextAdventure.Rooms
                 "Du befindest dich in einem Flur. Du kannst am Ende des Flurs eine weitere Tür sehen. Außerdem scheint es hier auch eine Leiter nach oben zu geben." +
                 "\nWas willst du tun? \nUmsehen? \nZur Tür? \nZur Leiter? ");
             String[] validInput = {"umsehen", "tür", "leiter", "zurück"};
-            string confirmation = _Program.checkInput(validInput);
+            string confirmation = _Program.CheckInput(validInput);
 
             switch (confirmation)
             {
@@ -32,18 +32,15 @@ namespace SUD_TextAdventure.Rooms
                     Console.WriteLine(
                         "Du gehst den Flur bis zur Tür entlang. Du öffnest sie und siehst wie eine Treppe hinunterführt.");
                     return "entranceArea";
-                    break;
                 case "leiter":
                     Console.WriteLine("Du stehst vor der Leiter. Möchtest du sie hoch klettern?");
                     String[] validInputLadder = {"ja", "nein"};
-                    String confirmationLadder = _Program.checkInput(validInputLadder);
+                    String confirmationLadder = _Program.CheckInput(validInputLadder);
                     if (confirmationLadder.Equals("ja"))
                     {
                         Console.WriteLine("Du kletterst die Leiter hoch und öffnest die Luke zum Dachboden.");
                         return "attic";
                     }
-                    break;
-                default:
                     break;
             }
 
