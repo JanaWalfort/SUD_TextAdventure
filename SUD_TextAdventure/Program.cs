@@ -158,9 +158,17 @@ namespace SUD_TextAdventure
                         break;
                     case "entranceArea":
                         string val = new entranceArea(this).run(_isDownstairs);
-                        if (val.Equals(""))
+                        if (val.Equals("corridorOne"))
                         {
-                            Room = "";
+                            Room = "corridorOne";
+                        }
+                        else if (val.Equals("corridorTwo"))
+                        {
+                            Room = "corridorTwo";
+                        }
+                        else if (val.Equals("kitchen"))
+                        {
+                            Room = "kitchen";
                         }
 
                         break;
@@ -173,6 +181,10 @@ namespace SUD_TextAdventure
                                 _isDownstairs = true;
                                 Room = "entranceArea";
                             }
+                            else if (retval.Equals("garden"))
+                            {
+                                Room = "garden";
+                            }
                         }
 
                         break;
@@ -180,9 +192,13 @@ namespace SUD_TextAdventure
                         while (Room == "garden")
                         {
                             string retval = new garden(this).run();
-                            if (retval.Equals(""))
+                            if (retval.Equals("kitchen"))
                             {
-                                Room = "";
+                                Room = "kitchen";
+                            }
+                            else if (retval.Equals("ballroom"))
+                            {
+                                Room = "ballroom";
                             }
                         }
 
@@ -191,9 +207,13 @@ namespace SUD_TextAdventure
                         while (Room == "ballroom")
                         {
                             string retval = new ballroom(this).run();
-                            if (retval.Equals(""))
+                            if (retval.Equals("corridorTwo"))
                             {
-                                Room = "";
+                                Room = "corridorTwo";
+                            }
+                            else if (retval.Equals("balcony"))
+                            {
+                                Room = "balcony";
                             }
                         }
 
@@ -202,9 +222,9 @@ namespace SUD_TextAdventure
                         while (Room == "balcony")
                         {
                             string retval = new balcony(this).run();
-                            if (retval.Equals(""))
+                            if (retval.Equals("ballroom"))
                             {
-                                Room = "";
+                                Room = "ballroom";
                             }
                         }
 
@@ -218,6 +238,14 @@ namespace SUD_TextAdventure
                                 _isDownstairs = true;
                                 Room = "entranceArea";
                             }
+                            else if (retval.Equals("library"))
+                            {
+                                Room = "library";
+                            }
+                            else if (retval.Equals("dungeon"))
+                            {
+                                Room = "dungeon";
+                            }
                         }
 
                         break;
@@ -225,9 +253,9 @@ namespace SUD_TextAdventure
                         while (Room == "library")
                         {
                             string retval = new library(this).run();
-                            if (retval.Equals(""))
+                            if (retval.Equals("corridorTwo"))
                             {
-                                Room = "";
+                                Room = "corridorTwo";
                             }
                         }
 
@@ -236,9 +264,9 @@ namespace SUD_TextAdventure
                         while (Room == "dungeon")
                         {
                             string retval = new dungeon(this).run();
-                            if (retval.Equals(""))
+                            if (retval.Equals("corridorTwo"))
                             {
-                                Room = "";
+                                Room = "corridorTwo";
                             }
                         }
 
