@@ -4,10 +4,12 @@ namespace SUD_TextAdventure.Models
 {
     public class Note
     {
-        public Note(string text)
+        public Note(string name ,string text)
         {
-            text = Text;
+            Name = name;
+            Text = text;
         }
+        public string Name { get; set; }
         public string Text { get; set; }
         public int Room { get; set; }
     }

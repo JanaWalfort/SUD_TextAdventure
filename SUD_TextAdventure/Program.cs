@@ -304,23 +304,18 @@ namespace SUD_TextAdventure
         {
             NotesList.List = new List<Note>();
             
-            Note key = new Note("");
-            NotesList.List.Add(key);
+            NotesList.List.Add(new Note("key", ""));
 
-            Note flashlight = new Note("");
-            NotesList.List.Add(flashlight);
+            NotesList.List.Add(new Note("flashlight", ""));
 
-            Note secretDoor = new Note("");
-            NotesList.List.Add(secretDoor);
+            NotesList.List.Add(new Note("secretDoor", ""));
 
-            Note crowbar = new Note("");
-            NotesList.List.Add(crowbar);
+            NotesList.List.Add(new Note("crowbar", ""));
 
-            Note stones = new Note("");
-            NotesList.List.Add(stones);
+            NotesList.List.Add(new Note("stones", ""));
 
-            Note rope = new Note("");
-            NotesList.List.Add(rope);
+            NotesList.List.Add(new Note("rope", ""));
+            
 
             foreach (var note in NotesList.List)
             {
