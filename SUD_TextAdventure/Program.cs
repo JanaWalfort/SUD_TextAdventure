@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using SUD_TextAdventure.Models;
 using SUD_TextAdventure.Rooms;
@@ -25,6 +25,8 @@ namespace SUD_TextAdventure
         {
             Character.Inventory = new List<Item>();
             distributeNotes();
+            TypeWriter typewriter = new TypeWriter();
+            Console.SetOut(typewriter);
             Console.WriteLine(
                 "Du gehst gerade nach Hause, als du plötztlich von hinten einen Schlag auf den Kopf bekommst!" +
                 "\nAls du wieder zu dir kommst, spürst du einen stechenden Schmerz an deinem Hinterkopf. Warte, wer warst Du noch einmal?");
