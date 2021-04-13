@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SUD_TextAdventure.Models;
 using SUD_TextAdventure.Rooms;
@@ -302,29 +302,34 @@ namespace SUD_TextAdventure
 
         public int distributeNotes()
         {
+            var tempList = new Notes();
+            tempList.List = new List<Note>();
             NotesList.List = new List<Note>();
             
             NotesList.List.Add(new Note("key", ""));
+            NotesList.List[0].Room = new Random().Next(1, 11);
+            
+            tempList.List.Add(new Note("flashlight", ""));
 
-            NotesList.List.Add(new Note("flashlight", ""));
+            tempList.List.Add(new Note("secretDoor", ""));
 
-            NotesList.List.Add(new Note("secretDoor", ""));
+            tempList.List.Add(new Note("crowbar", ""));
 
-            NotesList.List.Add(new Note("crowbar", ""));
+            tempList.List.Add(new Note("stones", ""));
 
-            NotesList.List.Add(new Note("stones", ""));
-
-            NotesList.List.Add(new Note("rope", ""));
+            tempList.List.Add(new Note("rope", ""));
             
 
-            foreach (var note in NotesList.List)
+            foreach (var note in tempList.List)
             {
                 Random number = new Random();
+                
                 bool isUsed = true;
                 bool isEqual = false;
                 while (isUsed)
                 {
                     note.Room = number.Next(1, 11);
+                    isEqual = false;
                     foreach (var checkNote in NotesList.List)
                     {
                         if (note.Room == checkNote.Room)
@@ -336,6 +341,7 @@ namespace SUD_TextAdventure
                     if (!isEqual)
                     {
                         isUsed = false;
+                        NotesList.List.Add(note);
                     }
                 }
             }
