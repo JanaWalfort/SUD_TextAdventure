@@ -13,6 +13,7 @@ namespace SUD_TextAdventure.Rooms
 
         public string run()
         {
+            // TODO: Write 2
             Console.WriteLine("Hello");
             Console.Read();
             return "";
