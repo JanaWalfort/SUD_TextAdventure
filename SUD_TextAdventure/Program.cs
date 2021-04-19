@@ -307,19 +307,19 @@ namespace SUD_TextAdventure
             var tempList = new Notes();
             tempList.List = new List<Note>();
             NotesList.List = new List<Note>();
-            
-            NotesList.List.Add(new Note("key", ""));
+
+            NotesList.List.Add(new Note("key", "Nur gebildete Menschen können mich finden."));
             NotesList.List[0].Room = new Random().Next(1, 11);
             
-            tempList.List.Add(new Note("flashlight", ""));
+            tempList.List.Add(new Note("flashlight", "Alle Augen versuchen sie zu finden, aber keiner kann sie sehen."));
 
-            tempList.List.Add(new Note("secretDoor", ""));
+            tempList.List.Add(new Note("secretDoor", "Hast Du den Beistand der Maus, des Adlers und des Bären, ist am dunkelsten Ort Dein Ziel ganz nah."));
 
-            tempList.List.Add(new Note("crowbar", ""));
+            tempList.List.Add(new Note("crowbar", "Du kannst mich im grünen Palast finden."));
 
-            tempList.List.Add(new Note("stones", ""));
+            tempList.List.Add(new Note("stones", "Der Bär hält seinen Winterschlaf östlich von hier. Der Adler fliegt in den Süden, wenn Drohung wittert. Die Maus versteckt ihren Käse vor der Katze in der nördlichsten Ecke"));
 
-            tempList.List.Add(new Note("rope", ""));
+            tempList.List.Add(new Note("rope", "Im längsten Tunnel findest Du das silberne Seil, um aus dieser Hölle zu entkommen."));
             
 
             foreach (var note in tempList.List)
