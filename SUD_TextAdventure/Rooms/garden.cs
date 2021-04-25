@@ -17,9 +17,9 @@ namespace SUD_TextAdventure.Rooms
 
             Console.WriteLine(
                 "Du kommst Dir vor als wärst Du im Paradies. Überall Blumen in vollster Pracht und in der Mitte steht ein wunderschöner Pavillion. " +
-                "Auf der anderen Seite siehst Du Licht schimmern." +
+                "Auf der anderen Seite siehst Du Licht schimmern. Leider ist der Garten von einem hohen Zaun umgeben." +
                 "\nWas willst du tun? \nUmsehen? \nZum Pavillion? \nZum Licht");
-            String[] validInput = {"umsehen", "pavillion", "licht"};
+            String[] validInput = {"umsehen", "pavillion", "licht", "zurück"};
             string confirmation = _Program.CheckInput(validInput);
 
             switch (confirmation)
@@ -50,6 +50,9 @@ namespace SUD_TextAdventure.Rooms
                         return "ballroom";
                     }
                     break;
+                case "zurück":
+                    Console.WriteLine("Du gehst zurück in die Küche. Du denkst nicht, dass Du hier im Garten weiterkommst.");
+                    return "kitchen";
             }
             return "";
         }

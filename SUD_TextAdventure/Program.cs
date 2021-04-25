@@ -20,7 +20,7 @@ namespace SUD_TextAdventure
 
         public Notes NotesList = new Notes();
 
-
+        // TODO: Implement in all rooms tips, go back and things to find and put them in the inventar
         public int RunProgram()
         {
             Character.Inventory = new List<Item>();
