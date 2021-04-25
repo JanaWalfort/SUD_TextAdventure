@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace SUD_TextAdventure.Rooms
 {
@@ -18,8 +18,8 @@ namespace SUD_TextAdventure.Rooms
             Console.WriteLine(
                 "Du befindest Dich in einem riesigen Ballsaal. An der Wand stehen Ritterrüstungen und an der Decke hängen gigantische Kronleuchter. " +
                 "\nAm Ende des Raums erkennst Du einen Balkon." +
-                "\nWas willst du tun? \nUmsehen? \nZum Balkon \nZurück");
-            String[] validInput = {"umsehen", "ritter", "balkon"};
+                "\nWas willst du tun? \nUmsehen? \nZum Balkon? \nZurück?");
+            String[] validInput = {"umsehen", "balkon", "zurück"};
             string confirmation = _Program.CheckInput(validInput);
 
             switch (confirmation)

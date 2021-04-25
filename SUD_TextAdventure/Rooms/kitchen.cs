@@ -16,8 +16,8 @@ namespace SUD_TextAdventure.Rooms
         {
             Console.WriteLine(
                 "Du befindest dich in einer Küche. Jemand hat ein schon gut duftendes Brot in den Ofen gestellt. War noch jemand hier?" +
-                "\nWas willst du tun? \nUmsehen? \nNach Draußen? \nZum Ofen? ");
-            String[] validInput = {"umsehen", "draußen", "ofen"};
+                "\nWas willst du tun? \nUmsehen? \nNach Draußen? \nZum Ofen? \nZurück?");
+            String[] validInput = {"umsehen", "draußen", "ofen", "zurück"};
             string confirmation = _Program.CheckInput(validInput);
 
             switch (confirmation)
@@ -41,6 +41,9 @@ namespace SUD_TextAdventure.Rooms
                         // TODO: Tip
                     }
                     break;
+                case "zurück":
+                    Console.WriteLine("Du gehst wieder hinaus auf den Flur und versuchst einen anderen Weg.");
+                    return "corridorTwo";
             }
             return "";
         }

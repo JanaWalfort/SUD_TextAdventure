@@ -18,7 +18,7 @@ namespace SUD_TextAdventure.Rooms
             Console.WriteLine(
                 "Du kommst Dir vor als wärst Du im Paradies. Überall Blumen in vollster Pracht und in der Mitte steht ein wunderschöner Pavillion. " +
                 "Auf der anderen Seite siehst Du Licht schimmern. Leider ist der Garten von einem hohen Zaun umgeben." +
-                "\nWas willst du tun? \nUmsehen? \nZum Pavillion? \nZum Licht");
+                "\nWas willst du tun? \nUmsehen? \nZum Pavillion? \nZum Licht? \nZurück?");
             String[] validInput = {"umsehen", "pavillion", "licht", "zurück"};
             string confirmation = _Program.CheckInput(validInput);
 
