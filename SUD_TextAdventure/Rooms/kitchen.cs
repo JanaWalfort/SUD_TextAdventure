@@ -15,7 +15,7 @@ namespace SUD_TextAdventure.Rooms
         public string run()
         {
             Console.WriteLine(
-                "Du befindest dich in einer Küche. Jemand hat ein schon gut duftendes Brot in den Ofen gestellt. War noch jemand hier? " +
+                "Du befindest dich in einer Küche. Jemand hat ein schon gut duftendes Brot in den Ofen gestellt. War noch jemand hier?" +
                 "\nWas willst du tun? \nUmsehen? \nNach Draußen? \nZum Ofen? ");
             String[] validInput = {"umsehen", "draußen", "ofen"};
             string confirmation = _Program.CheckInput(validInput);

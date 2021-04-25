@@ -1,4 +1,6 @@
-﻿namespace SUD_TextAdventure.Rooms
+﻿using System;
+
+namespace SUD_TextAdventure.Rooms
 {
     public class garden
     {
@@ -13,7 +15,42 @@
         public string run()
         {
 
-            // TODO: Write 1
+            Console.WriteLine(
+                "Du kommst Dir vor als wärst Du im Paradies. Überall Blumen in vollster Pracht und in der Mitte steht ein wunderschöner Pavillion. " +
+                "Auf der anderen Seite siehst Du Licht schimmern." +
+                "\nWas willst du tun? \nUmsehen? \nZum Pavillion? \nZum Licht");
+            String[] validInput = {"umsehen", "pavillion", "licht"};
+            string confirmation = _Program.CheckInput(validInput);
+
+            switch (confirmation)
+            {
+                case "umsehen":
+                    Console.WriteLine(
+                        "Langsam gehst Du durch den Garten und nimmst alles in Dich auf. Du fragst Dich wer wohl diesen schönen Garten angelgt hat. " +
+                        "\nEin alter Graf vielleich? Fast vergisst Du, dass Du entführt wurderst.");
+                    break;
+                case "pavillion":
+                    Console.WriteLine(
+                        "Am Pavillion angekommen, kannst Du über den ganzen Garten schauen. Wunderschön! Aber was ist das für eine Kiste? " +
+                        "\nMöchtest Du sie öffnen?");
+                    String[] validInputConfirm = {"ja", "nein"};
+                    String confirmationInputLadder = _Program.CheckInput(validInputConfirm);
+                    if (confirmationInputLadder.Equals("ja"))
+                    {
+                        Console.WriteLine("Du öffnest die Kiste und findest ein ..., was Du in Deine Tasche steckt. Es wird Dir bestimmt noch nützlich sein.");
+                        // TODO: Put sth in inventar
+                    }
+                    break;
+                case "licht":
+                    Console.WriteLine("Am anderen Ende angekommen, findest Du vor dir eine riesige Glasfront. Möchtest Du durch die Tür hindurch gehen?");
+                    String[] validInputLadder = {"ja", "nein"};
+                    String confirmationLadder = _Program.CheckInput(validInputLadder);
+                    if (confirmationLadder.Equals("ja"))
+                    {
+                        return "ballroom";
+                    }
+                    break;
+            }
             return "";
         }
     }
