@@ -248,6 +248,10 @@ namespace SUD_TextAdventure
                             {
                                 Room = "dungeon";
                             }
+                            else if (retval.Equals("corridorTwo"))
+                            {
+                                Room = "corridorTwo";
+                            }
                         }
 
                         break;

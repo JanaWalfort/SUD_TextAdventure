@@ -1,4 +1,5 @@
 ﻿using System;
+using SUD_TextAdventure.Models;
 
 namespace SUD_TextAdventure.Rooms
 {
@@ -27,7 +28,7 @@ namespace SUD_TextAdventure.Rooms
                 case "umsehen":
                     Console.WriteLine(
                         "Langsam gehst Du durch den Garten und nimmst alles in Dich auf. Du fragst Dich wer wohl diesen schönen Garten angelgt hat. " +
-                        "\nEin alter Graf vielleich? Fast vergisst Du, dass Du entführt wurderst.");
+                        "\nEin alter Graf vielleicht? Fast vergisst Du, dass Du entführt wurdest.");
                     break;
                 case "pavillion":
                     Console.WriteLine(
@@ -37,8 +38,8 @@ namespace SUD_TextAdventure.Rooms
                     String confirmationInputLadder = _Program.CheckInput(validInputConfirm);
                     if (confirmationInputLadder.Equals("ja"))
                     {
-                        Console.WriteLine("Du öffnest die Kiste und findest ein ..., was Du in Deine Tasche steckt. Es wird Dir bestimmt noch nützlich sein.");
-                        // TODO: Put sth in inventar
+                        Console.WriteLine("Du öffnest die Kiste und findest eine Brechstange, die Du in Deine Tasche steckt. Sie wird Dir bestimmt noch nützlich sein.");
+                        _Program.Character.Inventory.Add(new Item() {ItemName = "Brechstange"});
                     }
                     break;
                 case "licht":

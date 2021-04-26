@@ -1,4 +1,5 @@
 using System;
+using SUD_TextAdventure.Models;
 
 namespace SUD_TextAdventure.Rooms
 {
@@ -18,8 +19,8 @@ namespace SUD_TextAdventure.Rooms
             Console.WriteLine(
                 "Du befindest Dich in einem riesigen Ballsaal. An der Wand stehen Ritterrüstungen und an der Decke hängen gigantische Kronleuchter. " +
                 "\nAm Ende des Raums erkennst Du einen Balkon." +
-                "\nWas willst du tun? \nUmsehen? \nZum Balkon? \nZurück?");
-            String[] validInput = {"umsehen", "balkon", "zurück"};
+                "\nWas willst du tun? \nUmsehen? \nZum Balkon? \nZurück in den Garten? \nZurück in den Flur?");
+            String[] validInput = {"umsehen", "balkon", "garten", "flur"};
             string confirmation = _Program.CheckInput(validInput);
 
             switch (confirmation)
@@ -32,16 +33,19 @@ namespace SUD_TextAdventure.Rooms
                     String confirmationInputLadder = _Program.CheckInput(validInputConfirm);
                     if (confirmationInputLadder.Equals("ja"))
                     {
-                        Console.WriteLine("Die eine Ritterrüstung fällt was auseinander und Du entdeckst einen Gegenstand, der Dir vielleicht weiterhelfen wird auf Deiner Flucht!");
-                        // TODO: Put sth in inventar
+                        Console.WriteLine("Die eine Ritterrüstung fällt was auseinander und Du entdeckst ein Schwert, das Dir vielleicht weiterhelfen wird auf Deiner Flucht!");
+                        _Program.Character.Inventory.Add(new Item() {ItemName = "Schwert"});
                     }
                     break;
                 case "balkon":
                     Console.WriteLine("Du gehst hinaus auf den Balkon. Du atmest die frische Luft ein.");
                     return "balcony";
-                case "zurück":
+                case "garten":
                     Console.WriteLine("Der Garten in den Du hineingehst ist wundervoll. Vielleicht gibt es hier eine Fluchtmöglichkeit.");
                     return "garden";
+                case "flur":
+                    Console.WriteLine("Du gehst wieder zurück durch die Tür in den Flur.");
+                    return "corridorTwo";
             }
             return "";
         }
