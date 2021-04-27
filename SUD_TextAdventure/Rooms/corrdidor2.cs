@@ -16,24 +16,28 @@ namespace SUD_TextAdventure.Rooms
         {
             // TODO: Write 2
             Console.WriteLine("Du befindest Dich in einem langen Korridor, der ein paar Meter vor Dir eine Kurve macht.");
-            var validInput = new[] {"umsehen", "rot", "braun", "marmor"};
+            var validInput = new[] {"umsehen", "rot", "braun", "marmor", "metall"};
             var confirmation = _Program.CheckInput(validInput);
             switch (confirmation)
             {
                 case "umsehen":
                     Console.WriteLine("Dieser Korridor scheint nicht viel anders als der Andere. Hier und da steht etwas Dekoration, der schon länger nicht mehr geputzt wurde.");
-                    Console.WriteLine("Du gehst um die Ecke und erkennst, dass der Korridor insgesamt zu drei Räumen führt.");
-                    Console.WriteLine("Die braune Tür führt zurück zur Eingangshalle. Die zweite Tür wirkt ziemlich imposant und ist komplett aus Marmor gemacht. Die Dritte Tür hat einen rötlicheren Ton als die Türen, die Du bis jetzt gesenen hast.");
+                    Console.WriteLine("Du gehst um die Ecke und erkennst, dass der Korridor insgesamt zu vier Räumen führt.");
+                    Console.WriteLine("Die braune Tür führt zurück zur Eingangshalle. Die zweite Tür wirkt ziemlich imposant und ist komplett aus Marmor gemacht. Die Dritte Tür hat einen rötlicheren Ton als die Türen, die Du bis jetzt gesenen hast" +
+                                      "und die vierte Tür scheint aus Metall zu sein");
                     break;
                 case "rot":
-                    // ToDo: Add text
-                    return "libarary";
+                    Console.WriteLine("Du näherst Dich der roten Tür und öffnest sie.");
+                    return "library";
                 case "braun":
-                    // ToDo: Add text
+                    Console.WriteLine("Du öffnest die Tür zum Eingangsbereich.");
                     return "entranceArea";
-                case "mamor":
-                    // ToDo: Add text
+                case "marmor":
+                    Console.WriteLine("Du drückst die Klinke der Tür hinunter und betrittst den Raum.");
                     return "ballroom";
+                case "metall":
+                    Console.WriteLine("Du öffnest die schwere metall Tür und siehst eine Treppe, die tiefer in die Dunkelheit führt.");
+                    return "dungeon";
             }
 
             return "";
