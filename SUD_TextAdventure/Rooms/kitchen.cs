@@ -15,7 +15,7 @@ namespace SUD_TextAdventure.Rooms
         public string run()
         {
             Console.WriteLine(
-                "Du befindest dich in einer Küche. Jemand hat ein schon gut duftendes Brot in den Ofen gestellt. War noch jemand hier?" +
+                "Du befindest dich in einer Küche. Jemand hat ein schon gut duftendes Brot in den Ofen gestellt. Ist noch jemand hier?" +
                 "\nWas willst du tun? \nUmsehen? \nNach Draußen? \nZum Ofen? \nZurück?");
             String[] validInput = {"umsehen", "draußen", "ofen", "zurück"};
             string confirmation = _Program.CheckInput(validInput);
@@ -25,7 +25,7 @@ namespace SUD_TextAdventure.Rooms
                 case "umsehen":
                     Console.WriteLine(
                         "Wenn Du Dich in der Küche umsiehst, siehst Du weiter nur Gerümpel und eine Glastür, die offenbar nach draußen führt. " +
-                        "Du siehst Dich um und gehst zu den Schränken. \nHier steht altes Geschirr und verdorbenes Essen. Es ist nichts brauchbares dabei.");
+                        "Du gehst durch den Raum zu den Schränken. \nHier steht altes Geschirr und verdorbenes Essen. Es ist nichts brauchbares dabei.");
                     break;
                 case "draußen":
                     Console.WriteLine(

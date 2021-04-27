@@ -27,7 +27,7 @@ namespace SUD_TextAdventure.Rooms
             {
                 case "umsehen":
                     Console.WriteLine(
-                        "Langsam gehst Du durch den Garten und nimmst alles in Dich auf. Du fragst Dich wer wohl diesen schönen Garten angelgt hat. " +
+                        "Langsam gehst Du durch den Garten und nimmst alles in Dich auf. Du fragst Dich wer wohl diesen schönen Garten angelegt hat. " +
                         "\nEin alter Graf vielleicht? Fast vergisst Du, dass Du entführt wurdest.");
                     break;
                 case "pavillion":
@@ -38,12 +38,12 @@ namespace SUD_TextAdventure.Rooms
                     String confirmationInputLadder = _Program.CheckInput(validInputConfirm);
                     if (confirmationInputLadder.Equals("ja"))
                     {
-                        Console.WriteLine("Du öffnest die Kiste und findest eine Brechstange, die Du in Deine Tasche steckt. Sie wird Dir bestimmt noch nützlich sein.");
+                        Console.WriteLine("Du öffnest die Kiste und findest eine Brechstange, die Du in Deine Tasche steckst. Sie wird Dir bestimmt noch nützlich sein.");
                         _Program.Character.Inventory.Add(new Item() {ItemName = "Brechstange"});
                     }
                     break;
                 case "licht":
-                    Console.WriteLine("Am anderen Ende angekommen, findest Du vor dir eine riesige Glasfront. Möchtest Du durch die Tür hindurch gehen?");
+                    Console.WriteLine("Am anderen Ende angekommen, findest Du vor dir eine riesige Glastür. Möchtest Du durch die Tür hindurch gehen?");
                     String[] validInputLadder = {"ja", "nein"};
                     String confirmationLadder = _Program.CheckInput(validInputLadder);
                     if (confirmationLadder.Equals("ja"))

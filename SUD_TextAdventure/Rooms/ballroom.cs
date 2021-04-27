@@ -27,13 +27,13 @@ namespace SUD_TextAdventure.Rooms
             {
                 case "umsehen":
                     Console.WriteLine(
-                        "Der ganze RAum ist voller Spiegel und Marmor. Doch was Dich wirklich interessiert sind die Ritterrüstungen. " +
+                        "Der ganze Raum ist voller Spiegel und Marmor. Doch was Dich wirklich interessiert sind die Ritterrüstungen. " +
                         "\n Möchtest Du dir diese genauer anschauen?");
                     String[] validInputConfirm = {"ja", "nein"};
                     String confirmationInputLadder = _Program.CheckInput(validInputConfirm);
                     if (confirmationInputLadder.Equals("ja"))
                     {
-                        Console.WriteLine("Die eine Ritterrüstung fällt was auseinander und Du entdeckst ein Schwert, das Dir vielleicht weiterhelfen wird auf Deiner Flucht!");
+                        Console.WriteLine("Die eine Ritterrüstung fällt fast auseinander und Du entdeckst ein Schwert, das Dir auf Deiner Flucht vielleicht weiterhelfen wird!");
                         _Program.Character.Inventory.Add(new Item() {ItemName = "Schwert"});
                     }
                     break;

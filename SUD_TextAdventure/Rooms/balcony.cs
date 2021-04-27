@@ -29,13 +29,13 @@ namespace SUD_TextAdventure.Rooms
                         confirmation = _Program.CheckInput(validInput);
                         if (confirmation.Equals("ja"))
                         {
-                            Console.WriteLine("Du machst das Seil fest und kletterst vorsichtig herunter. Unten angekommen rennst zur Straße und endeckst eine Telefonzelle" +
+                            Console.WriteLine("Du machst das Seil fest und kletterst vorsichtig herunter. Unten angekommen rennst zur Straße und endeckst eine Telefonzelle." +
                                               "Du rufst die Polizei und bist entkommen. Herzlichen Glückwunsch!");
                             _Program.GameFinished = true;
                         }
                         else
                         {
-                            Console.WriteLine("Es ist doch sehr hoch oder? Vielleicht gehst Du zurück und suchst einen anderen Weg.");
+                            Console.WriteLine("Es ist doch sehr hoch oder? Vielleicht gehst Du zurück und versuchst einen anderen Weg.");
                         }
                     }
                     else
