@@ -21,25 +21,27 @@ namespace SUD_TextAdventure.Rooms
                     while (isDownstairs)
                     {
                         Console.WriteLine(
-                            "Von hier aus kannst Du zwei weitere Wege erkennen. Außerdem siehst Du die große Tür des Eingangsbereichs.\nUmsehen? \nZur Einganstür? \nZur linken Tür? \nZur rechten Tür? \nTreppe hinauf?");
+                            "Von hier aus kannst Du zwei weitere Wege erkennen. Außerdem siehst Du die große Tür des Eingangsbereichs." +
+                            "\nUmsehen? \nZur Einganstür? \nZur linken Tür? \nZur rechten Tür? \nTreppe hinauf?");
                         String[] validInput = {"umsehen", "eingangstür", "link", "recht", "treppe"};
                         string confirmation = _Program.CheckInput(validInput);
                         switch (confirmation)
                         {
                             case "umsehen":
-                                Console.WriteLine("Über schwebt ominös der Kronleuchter. Dir gegenüber liegt eine große, robuste Tür. Du kannst ausgefallene und seltsame Schnitzereien an der ihr erkennen.");
+                                Console.WriteLine("Über Dir schwebt ominös der Kronleuchter. Dir gegenüber liegt eine große, robuste Tür. Du kannst ausgefallene und seltsame Schnitzereien an ihr erkennen.");
                                 break;
                             case "eingangstür":
-                                if (_Program.Character.Inventory.Exists(x => x.ItemName == "schlüssel"))
+                                if (_Program.Character.Inventory.Exists(x => x.ItemName == "Schlüssel"))
                                 {
                                     Console.WriteLine(
-                                        "Du versuchst den Schlüssel ins Schloss zu stecken und Du kannst den Schlüssel im Schloss herumdrehen. Das Schloss klickt und Du schiebst die schwere Tür zur Seite\n Mit deiner neu gefundenen Freiheit rennst Du die Straße hinunter und findest eine Telefonzelle mit der Du die Polizei rufst. Herzlichen Glückwunsch, Du bist entkommen!");
+                                        "Du versuchst den Schlüssel ins Schloss zu stecken und Du kannst den Schlüssel im Schloss herumdrehen. Das Schloss klickt und Du schiebst die schwere Tür zur Seite." +
+                                        "\nMit deiner neu gefundenen Freiheit rennst Du die Straße hinunter und findest eine Telefonzelle mit der Du die Polizei rufst. Herzlichen Glückwunsch, Du bist entkommen!");
                                     _Program.GameFinished = true;
                                 }
                                 else
                                 {
                                     Console.WriteLine(
-                                        "Du drückst Dich gegen die Tür, aber sie bewegt sich kein Stück.");
+                                        "Du drückst Dich gegen die Tür, aber sie bewegt sich kein bisschen.");
                                 }
 
                                 break;
@@ -59,7 +61,8 @@ namespace SUD_TextAdventure.Rooms
                 else
                 {
                     Console.WriteLine(
-                        "Du befindest Dich auf der oberen Ebene. Von der Decke hängt ein großer Kronleuchter und hinter dir hängen unzählige Gemälde, die längst verstorbene Personen zeigen. \nWas willst Du tun? \nUmsehen? \nTreppe hinunter? \nZur Tür?");
+                        "Du befindest Dich auf der oberen Ebene. Von der Decke hängt ein großer Kronleuchter und hinter dir hängen unzählige Gemälde, die längst verstorbene Personen zeigen." +
+                        "\nWas willst Du tun? \nUmsehen? \nTreppe hinunter? \nZur Tür?");
                     String[] validInput = {"umsehen", "tür", "treppe", "gemälde"};
                     string confirmation = _Program.CheckInput(validInput);
 
@@ -70,7 +73,7 @@ namespace SUD_TextAdventure.Rooms
                                 "Du schaust Dich ein bisschen um. Was ist das? Unter deinem rechten Fuß wackelt eine Fliese. Willst Du Dir das genauer anschauen?");
                             validInput = new[] {"ja", "nein"};
                             confirmation = _Program.CheckInput(validInput);
-                            if (confirmation.Equals("ja"))
+                            if (confirmation.Equals("ja") && !_Program.Character.Inventory.Exists(x => x.ItemName == "Taschenlampe"))
                             {
                                 Console.WriteLine(
                                     "Du hebst die Fliese hoch und entdeckst eine Taschenlampe. Sie wird bestimmt nützlich sein und Du packst sie ein.");
