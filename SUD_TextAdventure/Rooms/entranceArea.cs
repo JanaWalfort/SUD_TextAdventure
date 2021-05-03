@@ -34,7 +34,7 @@ namespace SUD_TextAdventure.Rooms
                                 if (_Program.Character.Inventory.Exists(x => x.ItemName == "Schlüssel"))
                                 {
                                     Console.WriteLine(
-                                        "Du versuchst den Schlüssel ins Schloss zu stecken und Du kannst den Schlüssel im Schloss herumdrehen. Das Schloss klickt und Du schiebst die schwere Tür zur Seite." +
+                                        "Du versuchst den Schlüssel ins Schloss zu stecken und kannst den Schlüssel im Schloss herumdrehen. Das Schloss klickt und Du schiebst die schwere Tür zur Seite." +
                                         "\nMit deiner neu gefundenen Freiheit rennst Du die Straße hinunter und findest eine Telefonzelle mit der Du die Polizei rufst. Herzlichen Glückwunsch, Du bist entkommen!");
                                     _Program.GameFinished = true;
                                 }
@@ -61,7 +61,7 @@ namespace SUD_TextAdventure.Rooms
                 else
                 {
                     Console.WriteLine(
-                        "Du befindest Dich auf der oberen Ebene. Von der Decke hängt ein großer Kronleuchter und hinter dir hängen unzählige Gemälde, die längst verstorbene Personen zeigen." +
+                        "Du befindest Dich auf der oberen Ebene. Von der Decke hängt ein großer Kronleuchter und hinter Dir hängen unzählige Gemälde, die längst verstorbene Personen zeigen." +
                         "\nWas willst Du tun? \nUmsehen? \nTreppe hinunter? \nZur Tür?");
                     String[] validInput = {"umsehen", "tür", "treppe", "gemälde"};
                     string confirmation = _Program.CheckInput(validInput);
@@ -70,7 +70,7 @@ namespace SUD_TextAdventure.Rooms
                     {
                         case "umsehen":
                             Console.WriteLine(
-                                "Du schaust Dich ein bisschen um. Was ist das? Unter deinem rechten Fuß wackelt eine Fliese. Willst Du Dir das genauer anschauen?");
+                                "Du schaust Dich ein bisschen um. Was ist das? Unter Deinem rechten Fuß wackelt eine Fliese. Willst Du Dir das genauer anschauen?");
                             validInput = new[] {"ja", "nein"};
                             confirmation = _Program.CheckInput(validInput);
                             if (confirmation.Equals("ja") && !_Program.Character.Inventory.Exists(x => x.ItemName == "Taschenlampe"))

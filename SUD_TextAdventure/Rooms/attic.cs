@@ -33,17 +33,17 @@ namespace SUD_TextAdventure.Rooms
                 case "fenster":
                     if (!_isWindowBroken && _Program.Character.Inventory.Exists(x => x.ItemName == "Brechstange"))
                     {
-                        Console.WriteLine("Mit Deiner Brechstange zerschlägst Du das Fenster. Du schaust heraus und es ist viel zu hoch, um raus zu klettern.");
+                        Console.WriteLine("Mit Deiner Brechstange zerschlägst Du das Fenster. Du schaust hinaus und es ist viel zu hoch, um raus zu klettern.");
                         _isWindowBroken = true;
                     }
                     else if (!_isWindowBroken && _Program.Character.Inventory.Exists(x => x.ItemName == "Schwert"))
                     {
-                        Console.WriteLine("Mit Deinem Schwert zerschlägst Du das Fenster. Du schaust heraus und es ist viel zu hoch, um raus zu klettern.");
+                        Console.WriteLine("Mit Deinem Schwert zerschlägst Du das Fenster. Du schaust hinaus und es ist viel zu hoch, um raus zu klettern.");
                         _isWindowBroken = true;
                     }
                     else
                     {
-                        Console.WriteLine("Du guckst aus Fenster hinaus und siehst den Mond am Himmel stehen.");
+                        Console.WriteLine("Du guckst aus dem Fenster hinaus und siehst den Mond am Himmel stehen.");
                     }
                     if (_isWindowBroken && _Program.Character.Inventory.Exists(x => x.ItemName == "Seil"))
                     {
@@ -52,13 +52,13 @@ namespace SUD_TextAdventure.Rooms
                         confirmation = _Program.CheckInput(validInput);
                         if (confirmation.Equals("ja"))
                         {
-                            Console.WriteLine("Du machst das Seil fest und kletterst langsam die Wand herunter. Unten angekommen rennst zur Straße und endeckst eine Telefonzelle" +
+                            Console.WriteLine("Du machst das Seil fest und kletterst langsam die Wand herunter. Unten angekommen rennst Du zur Straße und endeckst eine Telefonzelle" +
                                               "Du rufst die Polizei und bist entkommen. Herzlichen Glückwunsch!");
                             _Program.GameFinished = true;
                         }
                         else
                         {
-                            Console.WriteLine("Um das Fenster liegen Scherben, aber ohne Weiteres kommst Du nicht heraus.");
+                            Console.WriteLine("Um das Fenster herum liegen Scherben, aber ohne Weiteres kommst Du nicht heraus.");
                         }
                     }
                     break;

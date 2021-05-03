@@ -18,8 +18,9 @@ namespace SUD_TextAdventure.Rooms
 
             Console.WriteLine(
                 "Du kommst Dir vor als wärst Du im Paradies. Überall Blumen in vollster Pracht und in der Mitte steht ein wunderschöner Pavillion. " +
-                "Auf der anderen Seite siehst Du Licht schimmern. Leider ist der Garten von einem hohen Zaun umgeben." +
-                "\nWas willst du tun? \nUmsehen? \nZum Pavillion? \nZum Licht? \nZurück?");
+                "Auf der anderen Seite siehst Du Licht schimmern." +
+                "\nLeider ist der Garten von einem hohen Zaun umgeben." +
+                "\nWas möchtest Du tun? Umsehen? Zum Pavillion? \nZum Licht? Zurück?");
             String[] validInput = {"umsehen", "pavillion", "licht", "zurück"};
             string confirmation = _Program.CheckInput(validInput);
 
@@ -27,13 +28,13 @@ namespace SUD_TextAdventure.Rooms
             {
                 case "umsehen":
                     Console.WriteLine(
-                        "Langsam gehst Du durch den Garten und nimmst alles in Dich auf. Du fragst Dich wer wohl diesen schönen Garten angelegt hat. " +
+                        "Langsam gehst Du durch den Garten und nimmst alles in Dich auf. Du fragst Dich wer wohl diesen schönen Garten angelegt hat." +
                         "\nEin alter Graf vielleicht? Fast vergisst Du, dass Du entführt wurdest.");
                     break;
                 case "pavillion":
                     Console.WriteLine(
-                        "Am Pavillion angekommen, kannst Du über den ganzen Garten schauen. Wunderschön! Aber was ist das für eine Kiste? " +
-                        "\nMöchtest Du sie öffnen?");
+                        "Am Pavillion angekommen, kannst Du über den ganzen Garten schauen. Aber was ist das für eine Kiste?" +
+                        "\nMöchtest Du versuchen sie zu öffnen?");
                     String[] validInputConfirm = {"ja", "nein"};
                     String confirmationInputLadder = _Program.CheckInput(validInputConfirm);
                     if (confirmationInputLadder.Equals("ja"))

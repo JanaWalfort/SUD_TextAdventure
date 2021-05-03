@@ -15,8 +15,8 @@ namespace SUD_TextAdventure.Rooms
         public string run()
         {
             Console.WriteLine(
-                "Du befindest dich in einer Küche. Jemand hat ein schon gut duftendes Brot in den Ofen gestellt. Ist noch jemand hier?" +
-                "\nWas willst du tun? \nUmsehen? \nNach Draußen? \nZum Ofen? \nZurück?");
+                "Du befindest Dich in einer Küche. Jemand hat ein schon gut duftendes Brot in den Ofen gestellt. Ist noch jemand hier?" +
+                "\nUmsehen? \nNach Draußen? \nZum Ofen? \nZurück?");
             String[] validInput = {"umsehen", "draußen", "ofen", "zurück"};
             string confirmation = _Program.CheckInput(validInput);
 
@@ -38,7 +38,7 @@ namespace SUD_TextAdventure.Rooms
                     if (confirmationLadder.Equals("ja"))
                     {
                         Console.WriteLine("Das Brot scheint fertig zu sein. Du nimmst es heraus und stärkst Dich.");
-                        // TODO: Tip
+                        // TODO: Tipp verstecken
                     }
                     break;
                 case "zurück":

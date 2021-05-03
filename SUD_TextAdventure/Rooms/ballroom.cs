@@ -17,9 +17,9 @@ namespace SUD_TextAdventure.Rooms
         {
 
             Console.WriteLine(
-                "Du befindest Dich in einem riesigen Ballsaal. An der Wand stehen Ritterrüstungen und an der Decke hängen gigantische Kronleuchter. " +
+                "Du befindest Dich in einem riesigen Ballsaal. An der Wand stehen Ritterrüstungen und an der Decke hängen gigantische Kronleuchter." +
                 "\nAm Ende des Raums erkennst Du einen Balkon." +
-                "\nWas willst du tun? \nUmsehen? \nZum Balkon? \nZurück in den Garten? \nZurück in den Flur?");
+                "\nWas willst Du tun? \nUmsehen? \nZum Balkon? \nZurück in den Garten? \nZurück in den Flur?");
             String[] validInput = {"umsehen", "balkon", "garten", "flur"};
             string confirmation = _Program.CheckInput(validInput);
 
@@ -27,8 +27,8 @@ namespace SUD_TextAdventure.Rooms
             {
                 case "umsehen":
                     Console.WriteLine(
-                        "Der ganze Raum ist voller Spiegel und Marmor. Doch was Dich wirklich interessiert sind die Ritterrüstungen. " +
-                        "\n Möchtest Du dir diese genauer anschauen?");
+                        "Der ganze Raum ist voller Spiegel und Marmor. Doch was Dich wirklich interessiert sind die Ritterrüstungen." +
+                        "\nMöchtest Du Dir diese genauer anschauen?");
                     String[] validInputConfirm = {"ja", "nein"};
                     String confirmationInputLadder = _Program.CheckInput(validInputConfirm);
                     if (confirmationInputLadder.Equals("ja"))
@@ -44,7 +44,7 @@ namespace SUD_TextAdventure.Rooms
                     Console.WriteLine("Der Garten in den Du hineingehst ist wundervoll. Vielleicht gibt es hier eine Fluchtmöglichkeit.");
                     return "garden";
                 case "flur":
-                    Console.WriteLine("Du gehst wieder zurück durch die Tür in den Flur.");
+                    Console.WriteLine("Du gehst wieder zurück durch eine Tür in den Flur.");
                     return "corridorTwo";
             }
             return "";

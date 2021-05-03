@@ -21,6 +21,7 @@ namespace SUD_TextAdventure
         public Notes NotesList = new Notes();
 
         // TODO: Implement in all rooms tips, go back and things to find and put them in the inventar
+        // TODO: Solve problem with go back, how do we know from where the person comes
         public int RunProgram()
         {
             Character.Inventory = new List<Item>();
@@ -41,7 +42,7 @@ namespace SUD_TextAdventure
             }
 
             Console.WriteLine("Nach allem Anschein wurdest du entführt. Du solltest versuchen dich zu befreien!" +
-                              "\nDu ertastest deine Umgebung und merkst, dass du auf einem Bett sitzt. Was willst du tun?\nAufstehen?\nUmsehen?");
+                              "\nDu ertastest deine Umgebung und merkst, dass du auf einem Bett sitzt. Was willst Du tun?\nAufstehen?\nUmsehen?");
 
 
             validInput = new[] {"aufstehen", "umsehen"};
@@ -312,14 +313,14 @@ namespace SUD_TextAdventure
             tempList.List = new List<Note>();
             NotesList.List = new List<Note>();
 
-            NotesList.List.Add(new Note("key", "Nur gebildete Menschen können mich finden."));
+            NotesList.List.Add(new Note("key", "Es gibt so viele Geschichten auf der Welt, aber in nur einer versteck ich mich."));
             NotesList.List[0].Room = new Random().Next(1, 11);
             
-            tempList.List.Add(new Note("flashlight", "Alle Augen versuchen sie zu finden, aber keiner kann sie sehen."));
+            tempList.List.Add(new Note("flashlight", "Wenn ich richtig überlege – gehen Menschen krumme Wege. Nur das Licht im Treppenhaus, das geht immer grade aus. (~ Erhard Horst Bellermann)"));
 
             tempList.List.Add(new Note("secretDoor", "Hast Du den Beistand der Maus, des Adlers und des Bären, ist am dunkelsten Ort Dein Ziel ganz nah."));
 
-            tempList.List.Add(new Note("crowbar", "Du kannst mich im grünen Palast finden."));
+            tempList.List.Add(new Note("crowbar", "Am schönsten Ort versteck ich mich. Ich bin frei, aber auch eingesperrt. Hilf mir, so helfe ich dir."));
 
             tempList.List.Add(new Note("stones", "Der Bär hält seinen Winterschlaf östlich von hier. Der Adler fliegt in den Süden, wenn Drohung wittert. Die Maus versteckt ihren Käse vor der Katze in der nördlichsten Ecke"));
 

@@ -15,7 +15,7 @@ namespace SUD_TextAdventure.Rooms
         public string run()
         {
             Console.WriteLine("Leider ist es hier zu hoch, um hinuter zu klettern." +
-                              "\nWas willst du tun? \nUmsehen? \nZurück");
+                              "\nWas willst Du tun? \nUmsehen? \nZurück");
             String[] validInput = {"umsehen", "zurück"};
             string confirmation = _Program.CheckInput(validInput);
 
@@ -29,7 +29,7 @@ namespace SUD_TextAdventure.Rooms
                         confirmation = _Program.CheckInput(validInput);
                         if (confirmation.Equals("ja"))
                         {
-                            Console.WriteLine("Du machst das Seil fest und kletterst vorsichtig herunter. Unten angekommen rennst zur Straße und endeckst eine Telefonzelle." +
+                            Console.WriteLine("Du machst das Seil fest und kletterst vorsichtig herunter. Unten angekommen rennst Du zur Straße und endeckst eine Telefonzelle." +
                                               "Du rufst die Polizei und bist entkommen. Herzlichen Glückwunsch!");
                             _Program.GameFinished = true;
                         }
