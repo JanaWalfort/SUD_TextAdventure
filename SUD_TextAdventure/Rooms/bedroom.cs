@@ -13,7 +13,6 @@ namespace SUD_TextAdventure.Rooms
 
         public string run()
         {
-            // TODO: Write 2
             Console.WriteLine("Du bist zurück im Schlafzimmer");
             Console.WriteLine("Du siehst: Einen Schrank, ein Bett und eine Tür. Was willst Du Dir genauer ansehen?");
             var validInput = new[] {"tür", "schrank", "bett", "zurück"};
@@ -21,16 +20,17 @@ namespace SUD_TextAdventure.Rooms
             switch (confirmation)
             {
                 case "tür":
-                    // ToDo: Add text
-                    break;
+                    Console.WriteLine("Du gehst zurück in den Flur.");
+                    return "corridorOne";
                 case "schrank":
                     // ToDo: Add text
+                    // ToDo: Tipp verstecken?
                     break;
                 case "bett":
                     // ToDo: Add text
                     break;
                 case "zurück":
-                    // ToDo: Add text
+                    Console.WriteLine("Du gehst zurück in den Flur.");
                     return "corridorOne";
             }
             

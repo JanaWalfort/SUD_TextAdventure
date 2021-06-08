@@ -125,9 +125,9 @@ namespace SUD_TextAdventure
                         while (Room == "bedroom")
                         {
                             string retval = new bedroom(this).run();
-                            if (retval.Equals(""))
+                            if (retval.Equals("corridorOne"))
                             {
-                                Room = "";
+                                Room = "corridorOne";
                             }
                         }
 
@@ -268,6 +268,15 @@ namespace SUD_TextAdventure
 
                         break;
                     case "dungeon":
+                        Console.WriteLine("Du gehst langsam die Treppe hinunter, die immer weiter nach unten führt.");
+                        if (Character.Inventory.Exists(x => x.ItemName == "Taschenlampe"))
+                        {
+                            Console.WriteLine("Mit Deiner Taschanlampe in der Hand, kommst Du unten an.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Unten an der Treppe angekommen, kannst Du kaum noch etwas erkennen");
+                        }
                         while (Room == "dungeon")
                         {
                             string retval = new dungeon(this).run();

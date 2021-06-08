@@ -36,9 +36,13 @@ namespace SUD_TextAdventure.Rooms
                         break;
                     case "themen":
                         // ToDo: Add text
+                        Console.WriteLine("Von hier kannst Du mehrere Reihen an Bücherregalen erkennen. Die Bücher behandeln Themen von Geschichte und Mythologie bis zu Fantasy und Horror.");
+                        Console.WriteLine("");
+                        // Themen der Bücher: Geschichte, Mythologie, Fantasy, Horror, Käsearten, ...
                         break;
                     case "bücher":
-                        // ToDo: Add text
+                        Console.WriteLine("Du nimmst Dir ein Buch aus dem Regal, das mit \'Geschichte\' gekennzeichnet ist.");
+                        Console.WriteLine("Das Buch heißt ... und handelt über ..."); // ToDo: Add + Tipp verstecken
                         break;
                     case "sessel":
                         while (!_Back)

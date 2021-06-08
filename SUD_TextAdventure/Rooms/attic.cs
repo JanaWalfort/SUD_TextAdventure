@@ -19,7 +19,7 @@ namespace SUD_TextAdventure.Rooms
             Console.WriteLine(
                 "Es ist so staubig, dass Du husten musst. Durch ein Dachfenster siehst Du ein paar Lichtstrahlen. Ist das vielleicht der Mond?" +
                 "\nUmsehen? \nFenster? \nZurück?");
-            String[] validInput = {"umsehen", "fenster", "zurück"};
+            String[] validInput = {"umsehen", "fenster", "zurück", "kiste"};
             string confirmation = _Program.CheckInput(validInput);
 
             switch (confirmation)
@@ -29,6 +29,9 @@ namespace SUD_TextAdventure.Rooms
                         "Der Dachboden ist überfüllt mit Kisten und in jeder Ecke steht Gerümpel. Du kannst Dich kaum bewegen, aber was ist das vor Deinen Füßen? " +
                         "Du findest einen mysteriösen Stein mit einem Adler drauf.");
                     _Program.Character.Inventory.Add(new Item() {ItemName = "Adler"});
+                    break;
+                case "kiste":
+                    Console.WriteLine("Du öffnest eine der Kisten. Du erwartest in der Kiste viel Gerümpel zu finden, aber in ihr ist nur ein einziges Stück Papier."); // ToDo: Tipp verstecken
                     break;
                 case "fenster":
                     if (!_isWindowBroken && _Program.Character.Inventory.Exists(x => x.ItemName == "Brechstange"))

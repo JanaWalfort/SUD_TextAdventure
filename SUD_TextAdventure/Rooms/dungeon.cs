@@ -1,4 +1,6 @@
-﻿namespace SUD_TextAdventure.Rooms
+﻿using System;
+
+namespace SUD_TextAdventure.Rooms
 {
     public class dungeon
     {
@@ -12,8 +14,18 @@
 
         public string run()
         {
+            // ToDo: Add Text
+            if (_Program.Character.Inventory.Exists(x => x.ItemName == "Taschenlampe"))
+            {
+                Console.WriteLine("");
+            }
+            else
+            {
+                Console.WriteLine("Nur durch das bisschen Licht was von oben herab scheint, erkennst Du, dass sich der enge Korridor in zwei Wege aufteilt, die tiefer in die Dunkelheit führen.");
+            }
+            Console.WriteLine("Dir läuft es eiskalt den Rücken herunter und Du musst plötzlich an all die alten Horrorspiele denken, die Du schon einmal gesehen hast.");
 
-            // TODO: Write 2
+
             return "";
         }
     }
