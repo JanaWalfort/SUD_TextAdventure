@@ -18,8 +18,8 @@ namespace SUD_TextAdventure.Rooms
             
             Console.WriteLine(
                 "Du befindest dich in einem Flur. Du kannst am Ende des Flurs eine weitere Tür sehen. Außerdem scheint es hier auch eine Leiter nach oben zu geben." +
-                "\nWas willst Du tun? \nUmsehen? \nZur Tür? \nZur Leiter? ");
-            String[] validInput = {"umsehen", "tür", "leiter", "zurück"};
+                "\nWas willst Du tun? \nUmsehen? \nZur Tür? \nZur Leiter? \nIns Schlafzimmer?");
+            String[] validInput = {"umsehen", "tür", "leiter", "zurück", "schlafzimmer"};
             string confirmation = _Program.CheckInput(validInput);
 
             switch (confirmation)
@@ -42,6 +42,8 @@ namespace SUD_TextAdventure.Rooms
                         return "attic";
                     }
                     break;
+                case "schlafzimmer":
+                    return "bedroom";
             }
 
             return "";
