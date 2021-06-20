@@ -19,29 +19,23 @@ namespace SUD_TextAdventure.Rooms
         {
             while (_Program.Room == "library")
             {
-                // TODO: Write 2
-                Console.WriteLine("Der Raum ist geschmückt mit Bücherregalen an jeder Wand.");
-                Console.WriteLine(_lookedAround);
-                if (_lookedAround)
-                    Console.WriteLine("Was möchtest Du Dir genauer ansehen? \nThemen der Bücher? \nDen Sessel?");
-                var validInput = new[] {"umsehen", "themen", "bücher", "sessel"};
+                Console.WriteLine(
+                    "Der Raum erstreckt sich weit nach oben mit vielen Bücherregalen und auf der anderen Seite befindet sich ein Sessel und ein Tisch, an dem man vermutlich gelesen hat.");
+                Console.WriteLine("Was möchtest Du Dir genauer ansehen? \nDie Regale? \nDie Bücher? \nDen Sessel?");
+                var validInput = new[] {"themen", "bücher", "sessel"};
                 var confirmation = _Program.CheckInput(validInput);
                 switch (confirmation)
                 {
-                    case "umsehen":
-                        Console.WriteLine(
-                            "Der Raum erstreckt sich weit nach oben mit weiteren Bücherregalen und auf der anderen Seite befindet sich ein Sessel und ein Tisch, an dem man vermutlich gelesen hat. Die Bücher scheinen nach Themen sortiert zu sein.");
-                        Console.WriteLine("Vielleicht kannst Du hier etwas darüber erfahren wo Du Dich befindest?");
-                        _lookedAround = true;
-                        break;
-                    case "themen":
+                    case "regale":
                         // ToDo: Add text
-                        Console.WriteLine("Von hier kannst Du mehrere Reihen an Bücherregalen erkennen. Die Bücher behandeln Themen von Geschichte und Mythologie bis zu Fantasy und Horror.");
+                        Console.WriteLine(
+                            "Von hier kannst Du mehrere Reihen an Bücherregalen erkennen. Die Bücher behandeln Themen von Geschichte und Mythologie bis zu Fantasy und Horror.");
                         Console.WriteLine("");
                         // Themen der Bücher: Geschichte, Mythologie, Fantasy, Horror, Käsearten, ...
                         break;
                     case "bücher":
-                        Console.WriteLine("Du nimmst Dir ein Buch aus dem Regal, das mit \'Geschichte\' gekennzeichnet ist.");
+                        Console.WriteLine(
+                            "Du nimmst Dir ein Buch aus dem Regal, das mit \'Geschichte\' gekennzeichnet ist.");
                         Console.WriteLine("Das Buch heißt ... und handelt über ..."); // ToDo: Add + Tipp verstecken
                         break;
                     case "sessel":
@@ -49,7 +43,8 @@ namespace SUD_TextAdventure.Rooms
                         {
                             Console.WriteLine(
                                 "Der Sessel selbst sieht ziemlich alt aber noch im guten Zustand aus. Auf dem Tisch neben ihm liegen sorar noch ein paar Bücher, als hätte bis gerade noch jemand hier gesessen und gelesen.");
-                            Console.WriteLine("Was möchtest Du tun?");
+                            Console.WriteLine("Was möchtest Du tun? \nBücher angucken? \nEin Buch öffnen? \n Zurück zur Tür?");
+                            // add todos
                             validInput = new[] {"bücher", "zurück", "öffnen"};
                             confirmation = _Program.CheckInput(validInput);
                             switch (confirmation)
@@ -65,6 +60,7 @@ namespace SUD_TextAdventure.Rooms
                                     Console.WriteLine(
                                         "Du nimmst ein Buch vom Tisch und öffnest es. \n Doch was ist das? In den Seiten befindet sich ein größes Loch und darin befindet sich ein komisch aussehender Stein.");
                                     _Program.Character.Inventory.Add(new Item() {ItemName = "Maus"});
+                                    _Back = true;
                                     break;
                             }
                         }
