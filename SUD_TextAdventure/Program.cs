@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SUD_TextAdventure.Constants;
 using SUD_TextAdventure.Models;
 using SUD_TextAdventure.Rooms;
 
@@ -17,11 +18,13 @@ namespace SUD_TextAdventure
         public bool GameFinished = false;
         public string Room = "bedroom";
         private bool _isDownstairs = false;
+        public bool _isWindowBroken = false;
 
-        public Notes NotesList = new Notes();
+        public readonly Notes NotesList = new Notes();
 
         // TODO: Implement in all rooms tips, go back and things to find and put them in the inventar
         // TODO: Solve problem with go back, how do we know from where the person comes
+        // ToDo: Add different text when an item was found
         public int RunProgram()
         {
             Character.CollectedNotes = new List<Note>();
@@ -93,8 +96,22 @@ namespace SUD_TextAdventure
                             "Du gehst auf die Tür zu. Sie wirkt ziemlich alt.\nDu versuchst sie zu öffnen, aber sie bewegt sich keinen Zentimeter.");
                         break;
                     case "schrank":
-                        Console.WriteLine(
-                            "Der Schrank steht in der Ecke des Raums. So wie es aussieht, scheint nur unbrauchbares Zeug darin zu liegen.");
+                        if (Character.CollectedNotes.Exists(x => x.Room == (int) Types.NoteRoom.Bedroom)
+                            && !NotesList.List.Exists(x => x.Room == (int) Types.NoteRoom.Bedroom))
+                        {
+                            Console.WriteLine(
+                                "Der Schrank steht in der Ecke des Raums. So wie es aussieht, scheint nur unbrauchbares Zeug darin zu liegen.");
+                        }
+                        else
+                        {
+                            Console.WriteLine(
+                                "Der Schrank steht in der Ecke des Raums. So wie es aussieht, scheint nur unbrauchbares Zeug darin zu liegen. \nWarte, was ist das?");
+                            Character.CollectedNotes.Add(
+                                NotesList.List.Find(x => x.Room == (int) Types.NoteRoom.Bedroom));
+                            Console.WriteLine(
+                                $"Du findest einen kleinen Zettel auf dem steht \'für {Character.Name}\'. Darunter steht noch \'{Character.CollectedNotes.Find(x => x.Room == (int) Types.NoteRoom.Bedroom)?.Text}\'");
+                        }
+
                         break;
                     case "bett":
                         Console.WriteLine("Du schaust unters Bett und findest eine Schatulle. Willst Du sie öffnen? ");
@@ -282,6 +299,7 @@ namespace SUD_TextAdventure
                         {
                             Console.WriteLine("Unten an der Treppe angekommen, kannst Du kaum noch etwas erkennen");
                         }
+
                         while (Room == "dungeon")
                         {
                             string retval = new dungeon(this).run();
@@ -327,24 +345,30 @@ namespace SUD_TextAdventure
             tempList.List = new List<Note>();
             NotesList.List = new List<Note>();
 
-            NotesList.List.Add(new Note("key", "Es gibt so viele Geschichten auf der Welt, aber in nur einer versteck ich mich."));
+            NotesList.List.Add(new Note("key",
+                "Es gibt so viele Geschichten auf der Welt, aber in nur einer versteck ich mich."));
             NotesList.List[0].Room = new Random().Next(1, 11);
-            
-            tempList.List.Add(new Note("flashlight", "Wenn ich richtig überlege – gehen Menschen krumme Wege. Nur das Licht im Treppenhaus, das geht immer grade aus. (~ Erhard Horst Bellermann)"));
 
-            tempList.List.Add(new Note("secretDoor", "Hast Du den Beistand der Maus, des Adlers und des Bären, ist am dunkelsten Ort Dein Ziel ganz nah."));
+            tempList.List.Add(new Note("flashlight",
+                "Wenn ich richtig überlege – gehen Menschen krumme Wege. Nur das Licht im Treppenhaus, das geht immer grade aus. (~ Erhard Horst Bellermann)"));
 
-            tempList.List.Add(new Note("crowbar", "Am schönsten Ort versteck ich mich. Ich bin frei, aber auch eingesperrt. Hilf mir, so helfe ich dir."));
+            tempList.List.Add(new Note("secretDoor",
+                "Hast Du den Beistand der Maus, des Adlers und des Bären, ist am dunkelsten Ort Dein Ziel ganz nah."));
 
-            tempList.List.Add(new Note("stones", "Der Bär hält seinen Winterschlaf östlich von hier. Der Adler fliegt in den Süden, wenn Drohung wittert. Die Maus versteckt ihren Käse vor der Katze in der nördlichsten Ecke"));
+            tempList.List.Add(new Note("crowbar",
+                "Am schönsten Ort versteck ich mich. Ich bin frei, aber auch eingesperrt. Hilf mir, so helfe ich dir."));
 
-            tempList.List.Add(new Note("rope", "Im längsten Tunnel findest Du das silberne Seil, um aus dieser Hölle zu entkommen."));
-            
+            tempList.List.Add(new Note("stones",
+                "Der Bär hält seinen Winterschlaf östlich von hier. Der Adler fliegt in den Süden, wenn Drohung wittert. Die Maus versteckt ihren Käse vor der Katze in der nördlichsten Ecke"));
+
+            tempList.List.Add(new Note("rope",
+                "Im längsten Tunnel findest Du das silberne Seil, um aus dieser Hölle zu entkommen."));
+
 
             foreach (var note in tempList.List)
             {
                 Random number = new Random();
-                
+
                 bool isUsed = true;
                 bool isEqual = false;
                 while (isUsed)
@@ -366,6 +390,7 @@ namespace SUD_TextAdventure
                     }
                 }
             }
+
             return 1;
         }
     }
