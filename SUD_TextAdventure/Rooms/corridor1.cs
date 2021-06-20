@@ -30,7 +30,7 @@ namespace SUD_TextAdventure.Rooms
                     break;
                 case "tür":
                     Console.WriteLine(
-                        "Du gehst den Flur bis zur Tür entlang. Du öffnest sie und siehst wie eine Treppe hinunterführt.");
+                        "Du gehst den Flur bis zur Tür entlang. Du öffnest sie und siehst wie eine Treppe hinunterführt."); // ToDo: Change text to empathise entering an new room
                     return "entranceArea";
                 case "leiter":
                     Console.WriteLine("Du stehst vor der Leiter. Möchtest Du sie hoch klettern?");

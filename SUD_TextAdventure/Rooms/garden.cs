@@ -19,7 +19,7 @@ namespace SUD_TextAdventure.Rooms
             Console.WriteLine(
                 "Du kommst Dir vor als wärst Du im Paradies. Überall Blumen in vollster Pracht und in der Mitte steht ein wunderschöner Pavillion. " +
                 "Auf der anderen Seite siehst Du Licht schimmern." +
-                "\nLeider ist der Garten von einem hohen Zaun umgeben." +
+                "\nLeider ist der Garten von einem hohen Zaun umgeben, über den Du nicht klettern kannst." +
                 "\nWas möchtest Du tun? Umsehen? Zum Pavillion? \nZum Licht? Zurück?");
             String[] validInput = {"umsehen", "pavillion", "licht", "zurück"};
             string confirmation = _Program.CheckInput(validInput);
@@ -33,7 +33,7 @@ namespace SUD_TextAdventure.Rooms
                     break;
                 case "pavillion":
                     Console.WriteLine(
-                        "Am Pavillion angekommen, kannst Du über den ganzen Garten schauen. Aber was ist das für eine Kiste?" +
+                        "Am Pavillion angekommen kannst Du über den ganzen Garten schauen. Aber was ist das für eine Kiste?" +
                         "\nMöchtest Du versuchen sie zu öffnen?");
                     String[] validInputConfirm = {"ja", "nein"};
                     String confirmationInputLadder = _Program.CheckInput(validInputConfirm);

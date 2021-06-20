@@ -14,6 +14,7 @@ namespace SUD_TextAdventure.Rooms
 
         public string run()
         {
+            // Brot gegessen, Brot nicht mehr im Ofen
             Console.WriteLine(
                 "Du befindest Dich in einer Küche. Jemand hat ein schon gut duftendes Brot in den Ofen gestellt. Ist noch jemand hier?" +
                 "\nUmsehen? \nNach Draußen? \nZum Ofen? \nZurück?");
@@ -43,7 +44,7 @@ namespace SUD_TextAdventure.Rooms
                     break;
                 case "zurück":
                     Console.WriteLine("Du gehst wieder hinaus auf den Flur und versuchst einen anderen Weg.");
-                    return "corridorTwo";
+                    return "entranceArea";
             }
             return "";
         }
