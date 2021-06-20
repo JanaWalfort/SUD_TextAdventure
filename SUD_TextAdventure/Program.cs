@@ -24,6 +24,7 @@ namespace SUD_TextAdventure
         // TODO: Solve problem with go back, how do we know from where the person comes
         public int RunProgram()
         {
+            Character.CollectedNotes = new List<Note>();
             Character.Inventory = new List<Item>();
             distributeNotes();
             TypeWriter typewriter = new TypeWriter();
@@ -144,6 +145,10 @@ namespace SUD_TextAdventure
                             {
                                 _isDownstairs = false;
                                 Room = "entranceArea";
+                            }
+                            else if (retval.Equals("bedroom"))
+                            {
+                                Room = "bedroom";
                             }
                         }
 

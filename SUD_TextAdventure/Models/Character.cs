@@ -6,6 +6,7 @@ namespace SUD_TextAdventure.Models
     {
         public string Name { get; set; }
         public List<Item> Inventory { get; set; }
+        public List<Note> CollectedNotes { get; set; }
     }
 
     public class Item
